@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>List of Staff | Administrator</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- or -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--===============================================================================================-->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--===============================================================================================-->
+
+    <script type="text/javascript">
+        //Phân Trang Cho Table
+        function Pager(tableName, itemsPerPage) {
+            this.tableName = tableName;
+            this.itemsPerPage = itemsPerPage;
+            this.currentPage = 1;
+            this.pages = 0;
+            this.inited = false;
+
+            this.showRecords = function (from, to) {
+                var rows = document.getElementById(tableName).rows;
+                for (var i = 1; i < rows.length; i++) {
+                    if (i < from || i > to)
+                        rows[i].style.display = 'none';
+                    else
+                        rows[i].style.display = '';
+                }
+            }
+
+            this.showPage = function (pageNumber) {
+                if (!this.inited) {
+                    alert("not inited");
+                    return;
+                }
+                var oldPageAnchor = document.getElementById('pg' + this.currentPage);
+                oldPageAnchor.className = 'pg-normal';
+
+                this.currentPage = pageNumber;
+                var newPageAnchor = document.getElementById('pg' + this.currentPage);
+                newPageAnchor.className = 'pg-selected';
+
+                var from = (pageNumber - 1) * itemsPerPage + 1;
+                var to = from + itemsPerPage - 1;
+                this.showRecords(from, to);
+            }
+
+            this.prev = function () {
+                if (this.currentPage > 1)
+                    this.showPage(this.currentPage - 1);
+            }
+
+            this.next = function () {
+                if (this.currentPage < this.pages) {
+                    this.showPage(this.currentPage + 1);
+                }
+            }
+
+            this.init = function () {
+                var rows = document.getElementById(tableName).rows;
+                var records = (rows.length - 1);
+                this.pages = Math.ceil(records / itemsPerPage);
+                this.inited = true;
+            }
+            this.showPageNav = function (pagerName, positionId) {
+                if (!this.inited) {
+                    alert("not inited");
+                    return;
+                }
+                var element = document.getElementById(positionId);
+
+                var pagerHtml = '<span onclick="' + pagerName +
+                    '.prev();" class="pg-normal">&#171</span> | ';
+                for (var page = 1; page <= this.pages; page++)
+                    pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName +
+                        '.showPage(' + page + ');">' + page + '</span> | ';
+                pagerHtml += '<span onclick="' + pagerName + '.next();" class="pg-normal">&#187;</span>';
+
+                element.innerHTML = pagerHtml;
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="time()" class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header">
+        <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+            aria-label="Hide Sidebar"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+
+
+            <!-- User Menu-->
+            <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
+                src="https://i.pinimg.com/564x/57/00/c0/5700c04197ee9a4372a35ef16eb78f4e.jpg" width="50px"
+                alt="User Image">
+            <div>
+                <a href="information-admin.html" style="color: white;" class="app-sidebar__user-name"><b>Admin</b></a>
+                <p class="app-sidebar__user-designation">Welcome Back</p>
+            </div>
+        </div>
+        <hr>
+        <ul class="app-menu">
+            <li><a class="app-menu__item " href="./information-admin.html"><i class='app-menu__icon bx bx-id-card'></i>
+                    <span class="app-menu__label">information Admin</span></a></li>
+            <li><a class="app-menu__item " href="./index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
+                        class="app-menu__label">Dashboard</span></a></li>
+            <li><a class="app-menu__item " href="./table-data-table.html"><i class='app-menu__icon bx bx-id-card'></i>
+                    <span class="app-menu__label">Staff Management</span></a></li>
+            <li><a class="app-menu__item" href="./table-data-product.html"><i
+                        class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Product
+                        Management</span></a></li>
+            <li><a class="app-menu__item" href="./table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
+                        class="app-menu__label">Order Management</span></a></li>
+            <li><a class="app-menu__item" href="./table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
+                        class="app-menu__label">Restricted Users</span></a></li>
+            <li><a class="app-menu__item" href="./quan-ly-bao-cao.html"><i
+                        class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Sales
+                        Report</span></a></li>
+            <li><a class="app-menu__item" href="./page-calendar.html"><i
+                        class='app-menu__icon bx bx-calendar-check'></i><span class="app-menu__label">User Management
+                    </span></a></li>
+        </ul>
+    </aside>
+    <main class="app-content">
+        <div class="container-fluid al">
+            <div id="clock"></div>
+            <Br>
+            <p class="timkiemnhanvien"><b>SEARCH FOR USERS:</b></p><Br><Br>
+            <input type="text" id="myInput" onkeyup="myFunction()"
+                placeholder="Enter the name of the employee you want to search for...">
+            <i class="fa fa-search" aria-hidden="true"></i>
+
+            <form action="">
+
+            </form>
+            <b>MAIN FUNCTIONS:</b><Br>
+            <button class="nv btn add-new" type="button" data-toggle="tooltip" data-placement="top" title="Add Staff"><i
+                    class="fas fa-user-plus"></i></button>
+            <div class="table-title">
+                <div class="row">
+
+                </div>
+
+            </div>
+            <table class="table table-bordered" id="myTable">
+                <thead>
+                    <tr class="ex">
+                        <th width="auto">Customer Name</th>
+                        <th width="auto">Sex</th>
+                        <th>Date of birth</th>
+                        <th>Address</th>
+                        <th>Country</th>
+                        <th width="5px; !important">Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>VIP 1</td>
+                        <td>Male</td>
+                        <td>15/03/2000</td>
+                        <td>Security information</td>
+
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tran Kha Ai</td>
+                        <td>Female</td>
+                        <td>12/02/1999</td>
+                        <td>155-157 Tran Quoc Thao street, district 3, Ho Chi Minh City</td>
+
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Tan Trung</td>
+                        <td>Male</td>
+                        <td>07/10/1997</td>
+                        <td>6 Nguyen Luong Bang street, district 7, Ho Chi Minh City</td>
+
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tran Truc An</td>
+                        <td>Female</td>
+                        <td>22/12/1999</td>
+                        <td>03 Hoa Binh street, district 11, Ho Chi Minh City</td>
+
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ami Kasumi</td>
+                        <td>Female</td>
+                        <td>02/06/1998</td>
+                        <td>19 Nguyen Huu Tho street, district 7, Ho Chi Minh City</td>
+
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Thi Thu Ngan</td>
+                        <td>Male</td>
+                        <td>06/04/1998</td>
+                        <td>13 Tan Thuan Dong street, district 7, Ho Chi Minh City</td>
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Anh Tuan</td>
+                        <td>Male</td>
+                        <td>23/07/1996</td>
+                        <td>59C Nguyen Dinh Chieu stree, district 3, Ho Chi Minh City</td>
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Huynh Cam Thu</td>
+                        <td>Female</td>
+                        <td>19/01/1997</td>
+                        <td>764 Vo Van Kiet street, district 5, Ho Chi Minh City</td>
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Xuan Ly</td>
+                        <td>Female</td>
+                        <td>30/10/1999</td>
+                        <td>Kenh T2 street, Binh Chanh district, Ho Chi Minh City</td>
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hoang Xuan Nam</td>
+                        <td>Female</td>
+                        <td>20/7/1989</td>
+                        <td>37 Van Tuong street, district 5, Ho Chi Minh City</td>
+                        <td>Viet Nam</td>
+                        <td>
+                            <a class="add" title="Save" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="pageNavPosition" class="text-right"></div>
+            <script type="text/javascript">
+                var pager = new Pager('myTable', 5);
+                pager.init();
+                pager.showPageNav('pager', 'pageNavPosition');
+                pager.showPage(1);
+            </script>
+        </div>
+
+        <!-- Essential javascripts for application to work-->
+        <!-- <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script> -->
+        <!-- The javascript plugin to display page loading on top-->
+        <!-- <script src="js/plugins/pace.min.js"></script> -->
+        <!-- Page specific javascripts-->
+        <!-- <script type="text/javascript" src="js/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="js/plugins/fullcalendar.min.js"></script>
+    <script src="jquery.min.js"></script> -->
+        <script type="text/javascript">
+            //Tìm kiếm
+            function myFunction() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+            //Lọc bảng
+            function sortTable() {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("myTable");
+                switching = true;
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[0];
+                        y = rows[i + 1].getElementsByTagName("TD")[0];
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        swal("Success!", "You Have Successfully Filtered", "success");
+                    }
+                }
+            }
+            //Thời Gian
+            function time() {
+                var today = new Date();
+                var weekday = new Array(7);
+                weekday[0] = "Sunday";
+                weekday[1] = "Monday";
+                weekday[2] = "Tuesday";
+                weekday[3] = "Wednesday";
+                weekday[4] = "Thursday";
+                weekday[5] = "Friday";
+                weekday[6] = "Saturday";
+                var day = weekday[today.getDay()];
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                nowTime = h + ":" + m + ":" + s;
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                today = day + ', ' + dd + '/' + mm + '/' + yyyy;
+                tmp = '<i class="fa fa-clock-o" aria-hidden="true"></i> <span class="date">' + today + ' | ' + nowTime +
+                    '</span>';
+                document.getElementById("clock").innerHTML = tmp;
+                clocktime = setTimeout("time()", "1000", "Javascript");
+
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
+            }
+
+            //Thêm
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+                var actions = $("table td:last-child").html();
+                $(".add-new").click(function () {
+                    $(this).attr("disabled", "disabled");
+                    var index = $("table tbody tr:last-child").index();
+                    var row = '<tr>' +
+                        '<td><input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"></td>' +
+                        '<td><input type="text" class="form-control" name="gioitinh" id="gioitinh" placeholder="Enter your gender"></td>' +
+                        '<td><input type="text" class="form-control" name="namsinh" id="namsinh" value="" placeholder="Enter Date of Birth"></td>' +
+                        '<td><input type="text" class="form-control" name="diachi" id="diachi" value="" placeholder="Enter Address"></td>' +
+                        '<td><input type="text" class="form-control" name="chucvu" id="chucvu" value="" placeholder="Enter Country"></td>' +
+                        '<td>' + actions + '</td>' +
+                        '</tr>';
+                    $("table").append(row);
+                    $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+                //Kiểm tra rỗng
+                $(document).on("click", ".add", function () {
+                    var empty = false;
+                    var input = $(this).parents("tr").find('input[type="text"]');
+                    input.each(function () {
+                        if (!$(this).val()) {
+                            $(this).addClass("error");
+                            swal("Notification!", "Blank Data Please Check", "error");
+                            empty = true;
+                        } else {
+                            $(this).removeClass("error");
+                            swal("Notification!", "You Have Not Entered Data yet", "warning");
+                        }
+                    });
+                    $(this).parents("tr").find(".error").first().focus();
+                    if (!empty) {
+                        input.each(function () {
+                            $(this).parent("td").html($(this).val());
+                            swal("Success!", "You Have Successfully Updated", "success");
+                        });
+                        $(this).parents("tr").find(".add, .edit").toggle();
+                        $(".add-new").removeAttr("disabled");
+                    }
+                });
+                // Sửa
+                $(document).on("click", ".edit", function () {
+                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                        $(this).html('<input type="text" class="form-control" value="' + $(this)
+                            .text() + '">');
+                    });
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").attr("disabled", "disabled");
+                });
+                jQuery(function () {
+                    jQuery(".add").click(function () {
+                        swal("Success!", "You Have Successfully Edited", "success");
+                    });
+                });
+                // Xóa
+                $(document).on("click", ".delete", function () {
+                    $(this).parents("tr").remove();
+                    swal("Success!", "You Have Successfully Deleted", "success");
+                    $(".add-new").removeAttr("disabled");
+                });
+            });
+            //Not use
+            jQuery(function () {
+                jQuery(".cog").click(function () {
+                    swal("Sorry!", "This feature is not yet available", "error");
+                });
+            });
+            //Tool tip
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    </main>
+</body>
+
+</html>

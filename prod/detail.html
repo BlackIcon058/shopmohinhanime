@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCT DETAIL</title>
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./detail.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"> <!-- ICON -->
+
+</head>
+
+<body>
+  <header>
+    <!--LOGO SHOP-->
+    <a href="../index.html" class="logo"><i class='bx bxl-flutter'></i>FIGURE SHOP</a>
+
+    <ul class="nav-bar">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#product">Other Products</a></li>
+    </ul>
+
+    <!--ICON-->
+    <div class="header-icons">
+      <i class='bx bx-filter' id="filter-icon"></i>
+      <i class='bx bx-search' id="search-icon"></i>
+      <a href="../cart.html">
+        <i class='bx bx-cart-alt' id="cart-icon" style="color: var(--text-color);"></i>
+      </a>
+      <i class='bx bx-user' id="user-icon"></i>
+    </div>
+
+    <!--LOC SAN PHAM-->
+    <div class="filter-container" >
+      <div class="filter-body">
+        <div class="filter-group">
+          <label for="category">Brand</label>          
+          <select id="category">
+            <option value="all">All</option>
+            <option value="onmyoji">Onmyoji</option>
+            <option value="apex">Apex</option>
+            <option value="estream">Estream</option>
+            <option value="aniplex">Aniplex</option>
+            <option value="alter">Alter</option>
+            <option value="bandaispirits">Bandai spirits</option>
+          </select>        
+        </div>
+        <div class="filter-group">
+          <label for="price">Price</label>
+          <div class="price-range">
+            <input type="number" id="min-price" placeholder="Low" min="1">
+            <span>-</span>
+            <input type="number" id="max-price" placeholder="High" min="1">
+          </div>
+        </div>
+        <div class="filter-group">
+          <label><a href="../special.html">Search</a></label>
+        </div>
+      </div>
+    </div>
+    
+    <!--THANH TIM KIEM-->
+    <div class="search-box">
+      <input type="search" class="header_search-input" name="" id="" placeholder="Search...">
+      <a href="../special.html"><button class="bx bx-search search-icon"></button></a>
+    </div>
+
+    <!--USER-->
+    <div class="user">
+      <a href="../signup.html" class="btn">Sign Up</a>
+      <a href="../login.html" class="btn">Login</a>
+    </div>    
+  </header>
+
+  <div class="detail-container">
+    <div class="detail">
+      <div class="image">
+        <img src="" alt="">
+      </div>
+
+      <div class="content">
+        <h1 class="name"></h1>
+        <div class="price"></div>
+        <div class="description"></div>
+
+        <div class="product-configuration">
+          <input type="number" value="1" min="1" max="99">
+          <button class="btn buy-btn">Add to Cart</button>
+        </div>  
+      </div>
+    </div>
+
+    <div class="title">Similar Products</div>
+    <div class="hr-line"></div>
+    <div id="product" class="listProduct"></div>
+  </div>
+
+  <!--FOOTER-->
+  <footer>
+    <div class="wrapper">
+      <p>© 2023 EIPI,Inc. All Rights Reserved</p>
+      <nav class="footer-nav">
+        <a href="#">Term of Use</a>
+        <a href="#">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!--js-->
+  <script src="./assets/JS/main.js"></script>
+
+  <script>
+    //lay data tu file JSON
+    let products = null;
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                products = data;
+                showDetail();
+        })
+
+        function showDetail(){
+
+        // remove datas default from HTML
+        let detail = document.querySelector('.detail');
+        let listProduct = document.querySelector('.listProduct');
+        let productId =  new URLSearchParams(window.location.search).get('id');
+        let thisProduct = products.filter(value => value.id == productId)[0];
+
+        //if there is no product with id = productId => return to home page
+        if(!thisProduct){
+            window.location.href = "/";
+        }
+
+        detail.querySelector('.image img').src = thisProduct.image;
+        detail.querySelector('.name').innerText = thisProduct.name;
+        detail.querySelector('.price').innerText = '$' + thisProduct.price;
+        detail.querySelector('.description').innerText = thisProduct.description;
+
+        (products.filter(value => value.id != productId)).forEach(product => {
+            let newProduct = document.createElement('a');
+            newProduct.href = '../prod/detail.html?id=' + product.id;
+            newProduct.classList.add('item');
+            newProduct.innerHTML = 
+            `<img src="${product.image}" alt="">
+            <h2>${product.name}</h2>
+            <div class="price">$${product.price}</div>`;
+            listProduct.appendChild(newProduct);
+        });
+    }
+  </script>
+  <script src="./addproducts.js"></script>
+  <script src="./main.js"></script>
+
+
+</body>
+</html>

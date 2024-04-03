@@ -1,0 +1,37 @@
+[
+    {
+        "id": 2,
+        "image": "https://nekotwo.com/cdn/shop/products/000_da00b8dc-17c7-4c1d-9425-b5ab54f10ecc_360x.jpg?v=1676796632",
+        "name": "Aki Hayakawa 1/7 Scale Figure eStream",
+        "price": 432.89,
+        "description": "We are a company focused on artist created content and making those amazing artworks into a product people can display in their homes."
+    },
+    {
+        "id": 5,
+        "image": "https://nekotwo.com/cdn/shop/products/pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg?v=1666665765",
+        "name": "Chainsaw Man 1/7 Scale Figure eStream",
+        "price": 464.39,
+        "description": "Series: Chainsaw Man \n Character: Chainsaw Man \n Material: PVC \n  Product Type: 1/7 scale figure \n  Manufacturer: eStream \n Dimensions (approx.): Approximately H281mm x W241mm x D256mm \n *Pre - Order* Close Date: 10/10/2022 \n Release Date (Manufacturer): Aug-2023 \n US Arrival: Dec-2023"
+    },
+    {
+        "id": 11,
+        "image": "https://nekotwo.com/cdn/shop/files/Nekotwo-_Pre-order_--Slime-Isekai---Rimuru-Tempest-_Ultimate-Ver._-1-7-Scale-Figure-Estream-1691731941526_1024x1024.jpg?v=1691731942",
+        "name": "Rimuru Tempest (Ultimate Ver.) 1/7 Scale Figure Estream",
+        "price": 478.79,
+        "description": "Series: That Time I Got Reincarnated as a Slime \n Character:  Rimuru Tempest \n Material: PVC & ABS \n Product Type: Scale Figure \n Manufacturer: Estream \n Dimensions (approx.): 35.4cm in height \n *Pre - Order* Close Date: 04/28/2021 \n Release Date: Jan 22"
+    },
+    {
+        "id": 14,
+        "image": "https://nekotwo.com/cdn/shop/products/pre-order-jujutsu-kaisen-kento-nanami-17-scale-figure-estream4580769940404-599232_1024x1024.jpg?v=1666666563",
+        "name": "Kento Nanami 1/7 Scale Figure eStream",
+        "price": 304.16,
+        "description": "Series: Jujutsu Kaisen \n Character: Kento Nanami \n Material: PVC \n Product Type: 1/7 Scale Figure \n Manufacturer: eStream \n Dimensions (approx.):  Approximately 280mm high \n  *Pre - Order* Close Date: 12/05/2022 \n Release Date (Manufacturer): Oct-2023 \n US Arrival: Feb-2024"
+    },
+    {
+        "id": 15,
+        "image":"https://nekotwo.com/cdn/shop/products/pre-order-date-a-barrett-kurumi-tokizaki-pigeon-blood-ruby-dress-ver-17-scale-figure-estream-963090_1024x1024.jpg?v=1657278645",
+        "name":"Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) 1/7 Scale Figure Estream",
+        "price":583.67,
+        "description": "Series: Date a Barrett \n  Character: Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) \n Material: PVC \n Product Type: 1/7 Scale Figure \n Manufacturer: Estream \n Dimensions (approx.): Size （est）：TBD \n *Pre - Order* Close Date: 12/19/2021 \n Release Date: Dec-2022"
+    }
+]
