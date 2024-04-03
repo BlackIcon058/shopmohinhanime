@@ -183,7 +183,7 @@ if ($total_pages != 0) {
   <div class="pagination">
     <li class="btn-prev current-page">
       <a href="?page=<?php echo ($current_page > 1) ? ($current_page - 1) : 1; ?>" class="page-link">
-        << /a>
+        <</a>
     </li>
     <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
       <li class="current-page <?php echo ($i == $current_page) ? 'pg-active' : 'pg-disable'; ?>">
