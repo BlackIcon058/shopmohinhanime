@@ -223,11 +223,11 @@ if (!isset($_SESSION['ADMIN'])) {
                 <?php 
                     if($status != ''){
                       if($status == 1){
-                      echo 'Đã xác nhận';
+                      echo 'Confirmed';
                       }elseif($status == 2){
-                        echo 'Giao hàng thành công';
+                        echo 'Successful delivery';
                       }elseif($status == 3){
-                        echo 'Đã hủy';
+                        echo 'Cancelled';
                       }
                     }
                 ?>
