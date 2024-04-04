@@ -8,7 +8,6 @@ require_once 'inc/nav_login.php';
 
 <?php
 if (isset($_SESSION['EMAIL_USER_LOGIN'])) {
-	echo '<script>alert("Đăng nhập thành công!");</script>';
 	echo '<script>
 	window.location.href = "index.php";</script>';
 	exit;
