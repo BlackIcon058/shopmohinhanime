@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['EMAIL_USER_LOGIN'] = $row['email'];
             $_SESSION['USERNAME_USER_LOGIN'] = $row['name'];
             $_SESSION['user_id'] = $row['id'];
-            //$_SESSION['message'] = 'Đăng nhập thành công!';
         }
     } else {
         echo 'Invalid';

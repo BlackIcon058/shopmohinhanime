@@ -91,7 +91,6 @@ if (!isset($_SESSION['ADMIN'])) {
         <div class="tile-body">
           <div class="row element-button">
             <div class="col-sm-2">
-            <?php echo $sql; ?>
               <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
                 Create new order</a>
             </div>
@@ -223,7 +222,13 @@ if (!isset($_SESSION['ADMIN'])) {
               <h4>Status: 
                 <?php 
                     if($status != ''){
-                      echo $status;
+                      if($status == 1){
+                      echo 'Đã xác nhận';
+                      }elseif($status == 2){
+                        echo 'Giao hàng thành công';
+                      }elseif($status == 3){
+                        echo 'Đã hủy';
+                      }
                     }
                 ?>
               </h4>
