@@ -122,7 +122,7 @@ function login_user_record() {
                             // console.log(true);
                             $('form').trigger('reset');
                             $('#error').html('');
-                            alert('Đăng nhập thành công!');
+                            alert('Welcome to Figure Shop');
                             window.location.href = 'index.php';
                         }
 
