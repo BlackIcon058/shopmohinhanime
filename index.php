@@ -62,7 +62,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
     <div class="arrival-content">
       <p>[Pre-order] Genshin Impact - HuTao Springy Chibi Mini Figure Apex Innovation</p>
       <h1>Hutao</h1>
-      <button class="btn buy-btn">Shop Now</button>
+      <button class="btn buy-btn">Comming soon</button>
     </div>
 
     <div class="arrival-img">
