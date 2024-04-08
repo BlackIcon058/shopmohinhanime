@@ -2,7 +2,7 @@
   <!--FOOTER-->
   <footer>
     <div class="wrapper">
-      <p>© 2023 EIPI,Inc. All Rights Reserved</p>
+      <p>© 2024 EIPI,Inc. All Rights Reserved</p>
       <nav class="footer-nav">
         <a href="#">Term of Use</a>
         <a href="#">Privacy</a>
