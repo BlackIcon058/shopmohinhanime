@@ -59,7 +59,7 @@ INSERT INTO `categories` (`id`, `cat_name`, `status`) VALUES
 (18, 'ESTREAM', 1),
 (19, 'ANIPLEX', 1),
 (20, 'ALTER', 1),
-(21, 'BANDAISPIRITS', 1);
+(21, 'BANDAISPIRIT', 1);
 
 -- --------------------------------------------------------
 
