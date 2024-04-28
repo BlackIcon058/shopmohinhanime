@@ -167,8 +167,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`p_id`, `category_name`, `provider_id`, `product_name`, `MRP`, `price`, `qty`, `product_sold`, `img`, `description`, `status`) VALUES
-(27, 16, 3, 'Chainsaw Man 1/7 Scale Figure eStream', 0, 50, 96, 5, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'San pham moi nhat!', 1),
-(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 50, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'San pham moi nhat!', 1),
+(27, 16, 3, 'Chainsaw Man 1/7 Scale Figure eStream', 0, 50, 96, 5, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Series: Chainsaw Man \n Character: Chainsaw Man \n Material: PVC \n  Product Type: 1/7 scale figure \n  Manufacturer: eStream \n Dimensions (approx.): Approximately H281mm x W241mm x D256mm \n *Pre - Order* Close Date: 10/10/2022 \n Release Date (Manufacturer): Aug-2023 \n US Arrival: Dec-2023', 1),
+(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 50, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'Series: Genshin Impact \n Character: Keqing (Piercing Thunderbolt Ver.) \n Material: PVC & ABS \n Product Type: Scale Figure \n Manufacturer: miHoYo x APEX Innovation \n Dimensions (approx.): H320mm*L190mm*W220 \n *Official Product* A special card will be included for preorder Limited In Stock', 1),
 (29, 16, 3, 'Suguru Geto 1/4 Scale Figure', 0, 50, 98, 2, 'pre-order-jujutsu-kaisen-suguru-geto-14-scale-figure-freeing4570001511295-347978_360x.jpg', 'Sản phẩm mới nhất!', 1),
 (30, 16, 3, 'EEEELeague of Legends - Jinx 1/7 Scale Figure Myethos', 0, 80, 3333, 0, '41E_2BzvfHwlL_540x.jpg', 'Sản phẩm mới nhất!', 1),
 (31, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 50, 100, 0, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Sản phẩm mới nhất!', 1),
