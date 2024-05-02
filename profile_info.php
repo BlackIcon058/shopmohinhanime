@@ -12,6 +12,10 @@ if (!isset($_SESSION['EMAIL_USER_LOGIN'])) {
 $view_customer = get_user_registers($_SESSION['user_id']);
 $row = mysqli_fetch_assoc($view_customer);
 $address = $row['address'];
+$name = $row['name'];
+$email = $row['email'];
+$gender = $row['gender'];
+$phone = $row['phone'];
 ?>
 
 <div class="row-check">
@@ -24,22 +28,22 @@ $address = $row['address'];
 							<div class="col-50">
 								<h3>Profile Info</h3>
 								<label for="fname"><i class="fa fa-user"></i>Name</label>
-								<input type="text" id="fname" name="name" placeholder="">
+								<input type="text" id="fname" name="name" value="<?php echo $name; ?>" placeholder="Your Name">
 
 								<label for="Email"><i class="fa fa-user"></i>Email</label>
-								<input type="text" id="Email" name="email" placeholder="">
+								<input type="text" id="Email" name="email" value="<?php echo $email; ?>" placeholder="Your Email">
 
 								<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
 								<input type="text" id="adr" name="address" value="<?php echo $address; ?>" placeholder="Your Address">
 
 								<label for="city"><i class="fa fa-institution"></i> Phone Number</label>
-								<input type="text" id="phone" name="phone" placeholder="">
-
+								<input type="text" id="phone" name="phone" value="<?php echo $phone;?>" placeholder="Your Phone">
+								<!--
 								<label for="dateofbirth"><i class="fa fa-institution"></i> Date Of Birth</label>
 								<input type="text" id="dateofbirth" name="dateofbirth" placeholder="">
-
+								-->
 								<label for="gender"><i class="fa fa-institution"></i> Gender</label>
-								<input type="text" id="gender" name="gender" placeholder="">
+								<input type="text" id="gender" name="gender" value="<?php echo $gender; ?>" placeholder="Your Gender">
 							</div>
 
 
