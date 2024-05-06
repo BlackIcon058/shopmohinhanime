@@ -31,7 +31,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 <div class="banner-container">
   <div class="banner">
     <div class="banner-text">
-      <h1 style="color: red ; text-shadow: 2px 2px #00ff40;"><i>WELCOME TO OUR ANIME HEAVEN yyyyy</i></h1>
+      <h1 style="color: red ; text-shadow: 2px 2px #00ff40;"><i>WELCOME TO OUR ANIME HEAVEN</i></h1>
       <a href="#product" class="banner-btn">SEE MORE</a>
     </div>
   </div>
