@@ -42,8 +42,8 @@
         <li><a class="app-menu__item " href="user_list.php"><i class='app-menu__icon bx bx-id-card'></i> <span class="app-menu__label">User Management</span></a></li>
         <li><a class="app-menu__item" href="manage_product.php"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Product Management</span></a></li>
         <li><a class="app-menu__item" href="order_master.php"><i class='app-menu__icon bx bx-task'></i><span class="app-menu__label">Order Management</span></a></li>
-        <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Restricted Users</span></a></li>
-        <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Sales Report</span></a></li>
+        <!-- <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Restricted Users</span></a></li> -->
+        <!-- <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Sales Report</span></a></li> -->
         <!-- <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-calendar-check'></i><span class="app-menu__label">Staff Management </span></a></li> -->
     </ul>
 </aside>
