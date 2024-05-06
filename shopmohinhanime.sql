@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 05:50 AM
+-- Generation Time: May 06, 2024 at 03:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -101,7 +101,9 @@ INSERT INTO `order` (`order_id`, `customer_id`, `order_code`, `order_date`, `ord
 (68, 21, '433822', '03/04/2024 04:59:42pm', 2),
 (69, 22, '24611', '03/04/2024 09:40:46pm', 3),
 (70, 22, '806970', '03/04/2024 09:45:06pm', 1),
-(71, 22, '365958', '04/04/2024 12:57:34am', 1);
+(71, 22, '365958', '04/04/2024 12:57:34am', 1),
+(72, 24, '164039', '06/05/2024 08:00:16am', 2),
+(73, 24, '26797', '06/05/2024 08:05:51am', 1);
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,11 @@ INSERT INTO `order_detail` (`order_detall_id`, `order_code`, `product_id`, `prod
 (58, '24611', 27, 3, 'Hoa Nguyen', '72 Long Tri Street, Ban Long, Chau Thanh, Đồng Nai', 'null', 'null', '0389938935', 'free', 50),
 (59, '24611', 29, 2, 'Hoa Nguyen', '72 Long Tri Street, Ban Long, Chau Thanh, Đồng Nai', 'null', 'null', '0389938935', 'free', 50),
 (60, '806970', 32, 3, 'cus99', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389938456', 'free', 15),
-(61, '365958', 27, 1, 'Nguyen Van A', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389948946', 'free', 50);
+(61, '365958', 27, 1, 'Nguyen Van A', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389948946', 'free', 50),
+(62, '164039', 31, 3, 'cus100', '273 An Dương Vương, phường 8, quận 5, TPHCM', 'null', 'null', '0123456789', 'free', 50),
+(63, '164039', 32, 1, 'cus100', '273 An Dương Vương, phường 8, quận 5, TPHCM', 'null', 'null', '0123456789', 'free', 15),
+(64, '26797', 35, 1, 'cus100', '273 An Dương Vương, phường 8, quận 5, TPHCM', 'null', 'null', '0123456789', 'free', 50),
+(65, '26797', 33, 1, 'cus100', '273 An Dương Vương, phường 8, quận 5, TPHCM', 'null', 'null', '0123456789', 'free', 25);
 
 -- --------------------------------------------------------
 
@@ -167,19 +173,19 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`p_id`, `category_name`, `provider_id`, `product_name`, `MRP`, `price`, `qty`, `product_sold`, `img`, `description`, `status`) VALUES
-(33, 16, 4, 'Rimuru Tempest (Ultimate Ver.) 1/7 Scale Figure Estream', 0, 25, 100, 0, 'Nekotwo-_Pre-order_--Slime-Isekai---Rimuru-Tempest-_Ultimate-Ver._-1-7-Scale-Figure-Estream-1691731941526_1024x1024.jpg', 'Series: That Time I Got Reincarnated as a Slime <br> Character:  Rimuru Tempest <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: Estream <br> Dimensions (approx.): 35.4cm in height <br> *Pre - Order* Close Date: 04/28/2021 ', 1),
-(32, 17, 4, 'Elementalist Lux Non-Scale Figure GSC', 0, 15, 100, 0, 'Nekotwo-League-of-Legends---Elementalist-Lux-Non-Scale-Figure-GSC-1679527904_1024x1024.jpg', 'Series: League of Legends <br> Character: lementalist Lux <br> Material: PVC & ABS <br> Product Type: Non-Scale Figure <br> Manufacturer: Good Smile Arts Shanghai <br> Dimensions (approx.): 340mm in height  <br> Limited In Stock In the US', 1),
-(30, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 80, 3333, 0, '41E_2BzvfHwlL_540x.jpg', 'Series: League of Legends <br> Character:  Jinx <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately 345mm in height <br> *Pre - Order* Close Date: 11/28/2021', 1),
-(31, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 50, 100, 0, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Series: League of Legends <br> Character:  Jinx <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately 345mm in height <br> *Pre - Order* Close Date: 11/28/2021', 1),
-(29, 16, 3, 'Suguru Geto 1/4 Scale Figure', 0, 50, 98, 2, 'pre-order-jujutsu-kaisen-suguru-geto-14-scale-figure-freeing4570001511295-347978_360x.jpg', 'Series: Jujutsu Kaisen <br> Character: Suguru Geto <br> Material: PVC & ABS <br> Product Type: 1/4 Scale Figure <br> Manufacturer: FREEing <br> Dimensions (approx.): Approximately 500mm in height. <br> *Pre - Order* Close Date: 11/14/2022', 1),
-(34, 18, 6, 'Kento Nanami 1/7 Scale Figure eStream', 0, 15, 120, 0, 'pre-order-jujutsu-kaisen-kento-nanami-17-scale-figure-estream4580769940404-599232_1024x1024.jpg', 'Series: Jujutsu Kaisen <br> Character: Kento Nanami <br> Material: PVC <br> Product Type: 1/7 Scale Figure <br> Manufacturer: eStream <br> Dimensions (approx.):  Approximately 280mm high <br>  *Pre - Order* Close Date: 12/05/2022', 1),
-(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 50, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'Series: Genshin Impact <br> Character: Keqing (Piercing Thunderbolt Ver.) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x APEX Innovation <br> Dimensions (approx.): H320mm*L190mm*W220', 1),
-(38, 17, 3, 'Genshin Impact - Barbara Pegg - 1/7 (Kotobukiya)', 0, 50, 100, 1, 'Nekotwo-_Pre-order_-Genshin-Impact---Barbara-_Shining-Idol_1-7-Scale-Figure-Kotobukiya-1675583070_360x.jpg', 'Series: Genshin Impact <br> Character: Barbara (Shining Idol) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x Kotobukiya <br> Dimensions (approx.): Approximately 270mm in height <br> *Official Product* Limited U.S. In ', 0),
-(35, 18, 3, 'Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) 1/7 Scale Figure Estream', 0, 50, 100, 0, 'pre-order-date-a-barrett-kurumi-tokizaki-pigeon-blood-ruby-dress-ver-17-scale-figure-estream-963090_1024x1024.jpg', 'Series: Date a Barrett <br> Character: Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) <br> Material: PVC <br> Product Type: 1/7 Scale Figure\r\nManufacturer: Estream <br> Dimensions (approx.): Size （est）：TBD <br> *Pre - Order* Close Date: 12/19/2021', 1),
 (27, 16, 3, 'Chainsaw Man 1/7 Scale Figure eStream', 0, 50, 96, 5, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Series: Chainsaw Man <br> Character: Chainsaw Man<br> Material: PVC <br> Product Type: 1/7 scale figure <br> Manufacturer: eStream <br> Dimensions (approx.): Approximately H281mm x W241mm x D256mm <br> *Pre - Order* Close Date: 10/10/2022', 1),
+(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 50, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'Series: Genshin Impact <br> Character: Keqing (Piercing Thunderbolt Ver.) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x APEX Innovation <br> Dimensions (approx.): H320mm*L190mm*W220', 1),
+(29, 16, 3, 'Suguru Geto 1/4 Scale Figure', 0, 50, 98, 2, 'pre-order-jujutsu-kaisen-suguru-geto-14-scale-figure-freeing4570001511295-347978_360x.jpg', 'Series: Jujutsu Kaisen <br> Character: Suguru Geto <br> Material: PVC & ABS <br> Product Type: 1/4 Scale Figure <br> Manufacturer: FREEing <br> Dimensions (approx.): Approximately 500mm in height. <br> *Pre - Order* Close Date: 11/14/2022', 1),
+(30, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 80, 3333, 0, '41E_2BzvfHwlL_540x.jpg', 'Series: League of Legends <br> Character:  Jinx <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately 345mm in height <br> *Pre - Order* Close Date: 11/28/2021', 1),
+(31, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 50, 97, 3, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Series: League of Legends <br> Character:  Jinx <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately 345mm in height <br> *Pre - Order* Close Date: 11/28/2021', 1),
+(32, 17, 4, 'Elementalist Lux Non-Scale Figure GSC', 0, 15, 99, 1, 'Nekotwo-League-of-Legends---Elementalist-Lux-Non-Scale-Figure-GSC-1679527904_1024x1024.jpg', 'Series: League of Legends <br> Character: lementalist Lux <br> Material: PVC & ABS <br> Product Type: Non-Scale Figure <br> Manufacturer: Good Smile Arts Shanghai <br> Dimensions (approx.): 340mm in height  <br> Limited In Stock In the US', 1),
+(33, 16, 4, 'Rimuru Tempest (Ultimate Ver.) 1/7 Scale Figure Estream', 0, 25, 100, 0, 'Nekotwo-_Pre-order_--Slime-Isekai---Rimuru-Tempest-_Ultimate-Ver._-1-7-Scale-Figure-Estream-1691731941526_1024x1024.jpg', 'Series: That Time I Got Reincarnated as a Slime <br> Character:  Rimuru Tempest <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: Estream <br> Dimensions (approx.): 35.4cm in height <br> *Pre - Order* Close Date: 04/28/2021 ', 1),
+(34, 18, 6, 'Kento Nanami 1/7 Scale Figure eStream', 0, 15, 120, 0, 'pre-order-jujutsu-kaisen-kento-nanami-17-scale-figure-estream4580769940404-599232_1024x1024.jpg', 'Series: Jujutsu Kaisen <br> Character: Kento Nanami <br> Material: PVC <br> Product Type: 1/7 Scale Figure <br> Manufacturer: eStream <br> Dimensions (approx.):  Approximately 280mm high <br>  *Pre - Order* Close Date: 12/05/2022', 1),
+(35, 18, 3, 'Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) 1/7 Scale Figure Estream', 0, 50, 100, 0, 'pre-order-date-a-barrett-kurumi-tokizaki-pigeon-blood-ruby-dress-ver-17-scale-figure-estream-963090_1024x1024.jpg', 'Series: Date a Barrett <br> Character: Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) <br> Material: PVC <br> Product Type: 1/7 Scale Figure\r\nManufacturer: Estream <br> Dimensions (approx.): Size （est）：TBD <br> *Pre - Order* Close Date: 12/19/2021', 1),
 (36, 19, 3, 'Caster/Muarsaki Shikibu 1/7 Scale Figure Alter', 0, 50, 100, 1, 'pre-order-fategrand-order-castermuarsaki-shikibu-17-scale-figure-alter-660908_1024x1024.jpg', 'Series:  FATE/GRAND ORDER <br> Character: Caster/Muarsaki Shikibu <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br>  Manufacturer: Alter <br> Dimensions (approx.): 290mm <br> *Pre - Order* Close Date: 03/13/2022 <br> Release Date: Jan-2023', 0),
-(42, 17, 5, 'Triumplant Excalibur', 0, 51, 100, 1, '51PA2ae57kL_540x.jpg', 'Franchise: Fate/Stay Night <br> Brand: Good Smile Company <br> Release Date: 20. Nov 2012 <br> Type: General <br> Dimensions: H=250 mm (9.75 in) Scale 1/7 <br> Material: PVC', 0),
-(37, 18, 3, 'Hatsune Miku (2022 Chinese New Year Ver.) 1/7 Scale Figue FuRyu', 0, 50, 100, 0, 'pre-order-hatsune-miku-fnex-poppro-hatsune-miku-2022-chinese-new-year-ver-17-scale-figure-furyu-383255_360x.jpg', 'Approximately 305mm in height.PKG <br> Size (est): W290 x D260 x H350mm', 1);
+(37, 18, 3, 'Hatsune Miku (2022 Chinese New Year Ver.) 1/7 Scale Figue FuRyu', 0, 50, 100, 0, 'pre-order-hatsune-miku-fnex-poppro-hatsune-miku-2022-chinese-new-year-ver-17-scale-figure-furyu-383255_360x.jpg', 'Approximately 305mm in height.PKG <br> Size (est): W290 x D260 x H350mm', 1),
+(38, 17, 3, 'Genshin Impact - Barbara Pegg - 1/7 (Kotobukiya)', 0, 50, 100, 1, 'Nekotwo-_Pre-order_-Genshin-Impact---Barbara-_Shining-Idol_1-7-Scale-Figure-Kotobukiya-1675583070_360x.jpg', 'Series: Genshin Impact <br> Character: Barbara (Shining Idol) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x Kotobukiya <br> Dimensions (approx.): Approximately 270mm in height <br> *Official Product* Limited U.S. In ', 0),
+(42, 17, 5, 'Triumplant Excalibur', 0, 51, 100, 1, '51PA2ae57kL_540x.jpg', 'Franchise: Fate/Stay Night <br> Brand: Good Smile Company <br> Release Date: 20. Nov 2012 <br> Type: General <br> Dimensions: H=250 mm (9.75 in) Scale 1/7 <br> Material: PVC', 0);
 
 -- --------------------------------------------------------
 
@@ -277,7 +283,8 @@ INSERT INTO `user_registers` (`id`, `name`, `email`, `address`, `phone`, `passwo
 (19, 'cus123', 'cus123@gmail.com', '54 An Dương Vương, Phường 22, Quận 5, Thành Phố Hồ Chí Minh', '0389948946', '$2y$10$8CbAxhrHHauukjYi9mciSOLKk4Vd4vX1VnR0ULBE/RiL0Vp0DeBei', '0000-00-00 00:00:00', 1, 1),
 (21, 'cus66', 'cus66@gmail.com', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', '0389938947', '$2y$10$TXsKF7lVETRbmrBg3IOluO3BVgfnNIVUwJ1H/nq1YDC2vq7.cLbvi', '2024-03-31 17:00:00', 1, 1),
 (22, 'cus99', 'cus99@gmail.com', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', '0389938456', '$2y$10$w6gw7Y5vM9PmGuuZnFPYBeOzgN9oXzYkcVWnxCadwR3bfRTkZh3HC', '0000-00-00 00:00:00', 1, 1),
-(23, 'cus23', 'cus23123@gmail.com', '83 Long Tri Street, Ban Long Commue', '0389938946', '$2y$10$mh94uslqDbNOLj8Cy3BTTOW/Uj3y2nVik0Pe4hsMV03bQr7SryxEa', '2024-04-02 17:00:00', 0, 1);
+(23, 'cus23', 'cus23123@gmail.com', '83 Long Tri Street, Ban Long Commue', '0389938946', '$2y$10$mh94uslqDbNOLj8Cy3BTTOW/Uj3y2nVik0Pe4hsMV03bQr7SryxEa', '2024-04-02 17:00:00', 0, 1),
+(24, 'cus100', 'cus100@gmail.com', '273 An Dương Vương, phường 8, quận 5, TPHCM', '0123456789', '$2y$10$o.LSjh2ZUMi7Q7iuknPEK.lDp90gxTF9kTaa9b4awmOop1Iu84q7C', '0000-00-00 00:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -307,7 +314,8 @@ INSERT INTO `vnpay` (`id_vnpay`, `vnp_amount`, `vnp_bankcode`, `vnp_banktranno`,
 (18, '50', 'NCB', 'VNP14364390', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240403091210', '00', 'M6VA80FI', '14364390', '292742'),
 (19, '110', 'NCB', 'VNP14365065', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240403160701', '00', 'M6VA80FI', '14365065', '509498'),
 (20, '95', 'NCB', 'VNP14365182', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240403165939', '00', 'M6VA80FI', '14365182', '433822'),
-(21, '45', 'NCB', 'VNP14365407', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240403214420', '00', 'M6VA80FI', '14365407', '806970');
+(21, '45', 'NCB', 'VNP14365407', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240403214420', '00', 'M6VA80FI', '14365407', '806970'),
+(22, '75', 'NCB', 'VNP14403078', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240506080537', '00', 'M6VA80FI', '14403078', '26797');
 
 --
 -- Indexes for dumped tables
@@ -409,13 +417,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -445,13 +453,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_registers`
 --
 ALTER TABLE `user_registers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `vnpay`
 --
 ALTER TABLE `vnpay`
-  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
