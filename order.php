@@ -38,7 +38,7 @@ if (isset($_SESSION['shopping_cart'])) {
     }
 }
 //Đổi từ tiền $ sang vnđ
-$order_total = $order_total * 23000;
+//$order_total = $order_total * 23000;
 // echo $order_total;
 
 if (isset($_POST['cash_payment']) && !empty($_POST['cash_payment'])) {
