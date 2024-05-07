@@ -4,9 +4,9 @@ require_once '../functions/db.php';
 require_once '../functions/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = safe_value($con, $_POST['Email']);
+    $name = safe_value($con, $_POST['Name']);
     $password = safe_value($con, $_POST['Password']);
-    $query = "select * from user_registers where email='$email'";
+    $query = "select * from user_registers where name='$name'";
     $result = mysqli_query($con, $query);
     if ($row = mysqli_fetch_assoc($result)) {
         if ($row['status'] == 0) {

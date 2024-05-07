@@ -8,6 +8,8 @@ if (!isset($_SESSION['EMAIL_USER_LOGIN']) || (empty($_SESSION['shopping_cart']))
 }
 ?>
 <?php
+$get_user_name = get_user_name($_SESSION['user_id']);
+$get_user_phone = get_user_phone($_SESSION['user_id']);
 $get_address_customer = get_user_address($_SESSION['user_id']);
 $row = mysqli_fetch_assoc($get_address_customer);
 $address = $row['address'];
@@ -27,10 +29,10 @@ $address = $row['address'];
 
 
 						<label for="fname"><i class="fa fa-user"></i> Full Name</label>
-						<input type="text" id="fname" name="name" placeholder="">
+						<input style="font-weight: 700;" type="text" id="fname" name="name" placeholder="" value="<?php echo $get_user_name ?>">
 
 						<label for="city"><i class="fa fa-institution"></i> Phone Number</label>
-						<input type="text" id="phone" name="phone" placeholder="">
+						<input style="font-weight: 700;" type="text" id="phone" name="phone" placeholder="" value="<?php echo $get_user_phone ?>">
 						<!-- <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
 							<input type="text" id="adr" name="address" readonly value="<?php echo $address ?>"> -->
 						<br>

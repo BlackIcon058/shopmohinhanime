@@ -15,6 +15,8 @@ if (isset($_GET['order_code'])) {
 <?php
 $_SESSION['user_id'] = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
 $allDonHang = tatca_donhang($_SESSION['user_id']);
+$get_status_order = get_status_order($_GET['order_code']);
+$check_payment_method = check_payment_method($_GET['order_code']);
 ?>
 
 <!-- Page info end -->
@@ -30,6 +32,70 @@ $allDonHang = tatca_donhang($_SESSION['user_id']);
             </div>
         </div>
     </div>
+
+    <div class="container order">
+        <div class="row">
+        </div>
+        <div class="container-xl order_customer">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div>
+                            <p style="font-weight: 700;">MÃ ĐƠN HÀNG: <?php echo $_GET['order_code'] ?> -
+                                <?php
+                                if ($get_status_order == 1) {
+                                    echo 'Đã xác nhận';
+                                } elseif ($get_status_order == 2) {
+                                    echo 'Đã giao thành công';
+                                } else {
+                                    echo 'Đã hủy';
+                                }
+                                ?>
+                            </p>
+                        </div>
+                        <br>
+
+                        <p style="font-weight: 700;">Địa Chỉ Nhận Hàng</p>
+                        <br>
+                        <ul>
+                            <?php foreach ($order_details as $row) : ?>
+                                <?php
+                                extract($row)
+                                ?>
+                                <li>Người nhận: <?php echo $row['name'] ?></li>
+                                <li>Số điện thoại: <?php echo $row['phone'] ?></li>
+                                <li>Địa chỉ nhận: <?php echo $row['address'] ?></li>
+                                <li>Hình thức thanh toán:
+                                    <?php
+                                    if ($check_payment_method) {
+                                        echo 'VNPay';
+                                    } else {
+                                        echo 'Thanh toán khi nhận hàng';
+                                    }
+                                    ?>
+                                </li>
+
+                                <?php break; ?>
+                            <?php endforeach ?>
+                        </ul>
+
+                        <div class="row">
+                            <div class="col-12 text-left">
+                                <h3 class="tm-block-title d-inline-block">
+
+                                </h3>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="container order">
         <div class="row">
         </div>

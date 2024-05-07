@@ -307,6 +307,31 @@ function get_user_address($customer_id) {
     return $result;
 }
 
+function get_user_name($customer_id) {
+    global $con;
+    $sql = "SELECT name FROM `user_registers` WHERE id = '$customer_id'";
+    $result = mysqli_query($con, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        mysqli_free_result($result);
+        return $row['name'];
+    } else {
+        return null;
+    }
+}
+
+function get_user_phone($customer_id) {
+    global $con;
+    $sql = "SELECT phone FROM `user_registers` WHERE id = '$customer_id'";
+    $result = mysqli_query($con, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        mysqli_free_result($result);
+        return $row['phone'];
+    } else {
+        return null;
+    }
+}
+
+
 function get_info_vnpay($vnp_banktranno){
     global $con;
     $sql = "SELECT * FROM vnpay WHERE vnp_banktranno = '$vnp_banktranno'";
@@ -343,6 +368,34 @@ function getMaxPrice() {
     $query = mysqli_query($con, $sql);
     $result = mysqli_fetch_assoc($query);
     return isset($result['max_price']) ? $result['max_price'] : 0;
+}
+
+
+// check hinh thuc thanh toan
+
+function check_payment_method($order_code){
+    global $con;
+    $sql = "SELECT * FROM vnpay WHERE order_code = '$order_code'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        mysqli_free_result($result);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function get_status_order($order_code){
+    global $con;
+    $sql = "SELECT order_status FROM `order` WHERE order_code = '$order_code'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $row['order_status'];
+    } else {
+        return null;
+    }
 }
 
 ?>

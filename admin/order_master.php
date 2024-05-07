@@ -36,8 +36,8 @@ if (!isset($_SESSION['ADMIN'])) {
           <div class="row element-button">
             <div class="col-sm-2">
 
-              <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
-                Create new order</a>
+              <!-- <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
+                Create new order</a> -->
             </div>
             <div class="col-sm-2">
               <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> Print data</a>

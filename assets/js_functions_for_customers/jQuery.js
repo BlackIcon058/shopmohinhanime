@@ -47,7 +47,13 @@ function isValidPhone(phone) {
     return phonePattern.test(phone);
 }
 
-// save user record fun
+// Hàm kiểm tra định dạng tên
+function isValidName(name) {
+    var regex = /^[a-zA-Z0-9]+$/; // chứa ký tự a-z, A-Z và số từ 0-9
+    return regex.test(name);
+}
+
+// save user record 
 function save_user_record() {
     $(document).on('click', '#btn_register', function () {
         var name = $('#name').val();
@@ -60,6 +66,11 @@ function save_user_record() {
 
         if (name == "" || email == "" || password == "" || cpassword == "" || gender == "" || phone == "" || address == "") {
             $('#error').html('Please Fill in the Blanks');
+            return;
+        }
+
+        if (!isValidName(name)) {
+            $('#error').html('Invalid Name Format');
             return;
         }
 
@@ -105,9 +116,9 @@ function save_user_record() {
 // login user record fun
 function login_user_record() {
     $(document).on('click', '#btn_login', function () {
-        var email = $('#email').val();
+        var name = $('#name').val();
         var password = $('#password').val();
-        if (email == "" || password == "") {
+        if (name == "" || password == "") {
             $('#error').html('Please Fill in the Blanks');
         }
         else {
@@ -115,7 +126,7 @@ function login_user_record() {
                 {
                     url: 'ajax/login_user.php',
                     method: 'post',
-                    data: { Email: email, Password: password },
+                    data: { Name: name, Password: password },
                     success: function (data) {
                         console.log(data);
                         if (data.trim() == "Valid") {
