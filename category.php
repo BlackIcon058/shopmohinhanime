@@ -78,7 +78,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 						<img src="./admin/img/<?php echo $row['img'] ?>" alt="Product img">
 					</div>
 					<h2><?php echo $row['product_name'] ?></h2>
-					<div class="price">$ <?php echo $row['price'] ?></div>
+					<div class="price"><?php echo $row['price'] ?> VND</div>
 				</a>
 		<?php
 			}

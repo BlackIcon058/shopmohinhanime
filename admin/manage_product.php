@@ -74,7 +74,7 @@ if (!isset($_SESSION['ADMIN'])) {
                       ?>
                     </span>
                   </td>
-                  <td><?php echo $row['price']; ?> $</td>
+                  <td><?php echo $row['price']; ?> VND</td>
                   <td><?php echo $row['cat_name']  ?></td>
                   <td>
                     <!-- onclick="myFunction(this)"  -->

@@ -247,7 +247,12 @@ function insert_chitiet_donhang($data_order_detail)
 function tatca_donhang($customer_id)
 {
     global $con;
-    $sql = "SELECT * FROM `order` WHERE customer_id = $customer_id";
+    $sql = "SELECT `order`.*, SUM(order_detail.product_quantity * order_detail.product_price) AS total_order
+            FROM `order`
+            JOIN order_detail ON `order`.order_code = order_detail.order_code
+            WHERE customer_id = '$customer_id'
+            GROUP BY `order`.order_code";
+
     $listAll = mysqli_query($con, $sql);
     if (!$listAll) {
         echo "Lỗi: " . mysqli_error($con);

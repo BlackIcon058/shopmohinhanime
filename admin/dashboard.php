@@ -88,7 +88,7 @@ $total_product = total_product();
                       <td>AL3947</td>
                       <td>Lana Del Rey</td>
                       <td>
-                        385.93 $
+                        385000 VND
                       </td>
                       <td><span class="badge bg-info">Waiting for progressing</span></td>
                     </tr>
@@ -96,7 +96,7 @@ $total_product = total_product();
                       <td>ER3835</td>
                       <td>Andrea Bocelli </td>
                       <td>
-                        539.87 $
+                        5000000 VND
                       </td>
                       <td><span class="badge bg-warning">Being transported</span></td>
                     </tr>
@@ -104,7 +104,7 @@ $total_product = total_product();
                       <td>MD0837</td>
                       <td>Ed Sheeran</td>
                       <td>
-                        496.7 $
+                        496000 VND
                       </td>
                       <td><span class="badge bg-success">Done</span></td>
                     </tr>
@@ -112,7 +112,7 @@ $total_product = total_product();
                       <td>MT9835</td>
                       <td>Robbie Williams 	</td>
                       <td>
-                        879.65 $
+                        870000 VND
                       </td>
                       <td><span class="badge bg-danger">Cancelled	</span></td>
                     </tr>

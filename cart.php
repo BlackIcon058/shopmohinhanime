@@ -58,7 +58,7 @@ $cart = show_giohang($_SESSION['user_id']);
                 <img src="admin/img/<?php echo $value['product_image']; ?>">
                 <div>
                   <p><?php echo $value['product_title']; ?></p>
-                  <small>Price: $<?php echo $value['product_price']; ?></small>
+                  <small>Price: <?php echo $value['product_price']; ?> VND</small>
                   <br>
                   <!-- <a href="">Remove</a> -->
                   <!-- <button type="submit" class="btn btn-sm btn-warning" value="<?php echo $value['product_id']; ?>" name="delete_cart">Remove</button> -->

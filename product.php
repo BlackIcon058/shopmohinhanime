@@ -25,7 +25,7 @@ $related_product = get_related_products($result['category_name']);
 
 			<div class="content">
 				<h1 class="name"><?php echo $result['product_name']; ?></h1>
-				<div class="price">$ <?php echo $result['price']; ?></div>
+				<div class="price"><?php echo $result['price']; ?> VND</div>
 				<div class="description"><?php echo $result['description']; ?></div>
 
 				<div class="product-configuration">
@@ -63,7 +63,7 @@ $related_product = get_related_products($result['category_name']);
 					<img src="./admin/img/<?php echo $row['img'] ?>" alt="Product img">
 				</div>
 				<h2><?php echo $row['product_name'] ?></h2>
-				<div class="price">$ <?php echo $row['price'] ?></div>
+				<div class="price"><?php echo $row['price'] ?> VND</div>
 			</a>
 		<?php
 		}

@@ -148,8 +148,8 @@ $check_payment_method = check_payment_method($_GET['order_code']);
                                             <input type="text" disabled value="<?= $product_quantity ?>" name="product_quantity">
                                         </td>
 
-                                        <td><?php echo number_format($product_price) . ' $'; ?></td>
-                                        <td><?php echo number_format($product_quantity * $product_price) . ' $'; ?></td>
+                                        <td><?php echo number_format($product_price) . ' VND'; ?></td>
+                                        <td><?php echo number_format($product_quantity * $product_price) . ' VND'; ?></td>
                                     </tr>
                                     <?php
                                     $total_price += $product_quantity * $product_price;
@@ -159,7 +159,7 @@ $check_payment_method = check_payment_method($_GET['order_code']);
                             <tfoot>
                                 <tr>
                                     <td colspan="5"><strong>Total order:</strong></td>
-                                    <td><strong>$ <?php echo $total_price; ?></strong></td>
+                                    <td><strong><?php echo $total_price; ?> VND</strong></td>
                                 </tr>
                             </tfoot>
                         </table>

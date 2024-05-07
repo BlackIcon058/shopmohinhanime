@@ -173,7 +173,7 @@ if (!isset($_SESSION['ADMIN'])) {
                   <!-- <td>Chainsaw Man 1/7 Scale Figure eStream</td>
                   <td>1</td> -->
                   <td><?php echo $order_date; ?></td>
-                  <td><?php echo $total_order; ?> $</td>
+                  <td><?php echo $total_order; ?> VND</td>
                   <td>
                     <?php
                     if ($order_status == 1) {

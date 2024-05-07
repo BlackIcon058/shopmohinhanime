@@ -208,7 +208,7 @@ if (isset($_GET['order_code'])) {
 
                         <tr>
                             <th colspan="5">Total:</th>
-                            <td><?php echo $total_price; ?> $</td>
+                            <td><?php echo $total_price; ?> VND</td>
                         </tr>
                     </table>
                 </div>
