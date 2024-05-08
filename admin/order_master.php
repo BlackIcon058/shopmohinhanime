@@ -43,7 +43,19 @@ if (!isset($_SESSION['ADMIN'])) {
               <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> Print data</a>
             </div>
 
-            <span style="margin-left: 10px; cursor: pointer; background-color: #bfbeef; color: #000; border-radius: 5px; height: 33px; padding: 3px 5px 5px 5px;" id="filter-button">
+            <div class="col-sm-2">
+              <div style="display: flex;">
+                <span style="width: 80px; font-weight: bolder; padding: 5px 5px 0 5px; color: #03009a; cursor: pointer;" id="statistical-toggle">Statistical</span>
+                <form id="statistical-container-wrapper" action="search_order_statistical.php" method="get" style="display: none;">
+                  <input class="form-control" name="from_date" type="date" placeholder="From date" style="margin-right: 5px; height: 30px;">
+                  <span style="margin-right: 5px;"> - </span>
+                  <input class="form-control" name="to_date" type="date" placeholder="To date" style="height: 30px;">
+                  <button type="submit" style="margin-left: 5px;width: 150px;">Search</button>
+                </form>
+              </div>
+            </div>
+
+            <span style="float: right; background-color: #bfbeef; color: #000; border-radius: 5px; height: 33px; padding: 3px 5px 5px 5px;" id="filter-button">
               <i class='bx bx-filter' id="filter-icon"></i>Filter
             </span>
 
@@ -134,9 +146,7 @@ if (!isset($_SESSION['ADMIN'])) {
               });
             </script>
 
-
-            <div class="col-sm-2">
-
+            <!-- <div class="col-sm-2">
               <form action="search_order_statistical.php" method="get">
                 <div style="display: flex; margin-left: 200px;">
                   <span style="width: 80px; font-weight: bolder; padding: 5px 5px 0 5px; color: #03009a;">Statistical</span>
@@ -146,7 +156,10 @@ if (!isset($_SESSION['ADMIN'])) {
                   <button type="submit" style="margin-left: 5px;width: 150px;">Search</button>
                 </div>
               </form>
-            </div>
+            </div> -->
+
+
+
           </div>
           <table class="table table-hover table-bordered" id="sampleTable">
             <thead>
@@ -345,6 +358,8 @@ if (!isset($_SESSION['ADMIN'])) {
   //   }
   // });
 
+
+
   //Modal
   $("#show-emp").on("click", function() {
     $("#ModalUP").modal({
@@ -353,21 +368,57 @@ if (!isset($_SESSION['ADMIN'])) {
     })
   });
 
-  document.getElementById("filter-button").addEventListener("click", function() {
-    var filterContainer = document.getElementById("filter-container-wrapper");
+  // document.getElementById("filter-button").addEventListener("click", function() {
+  //   var filterContainer = document.getElementById("filter-container-wrapper");
+  //   if (filterContainer.style.display === "none") {
+  //     filterContainer.style.display = "block";
+      
+  //   } else {
+  //     filterContainer.style.display = "none";
+  //   }
+  // });
+
+  // document.getElementById('statistical-toggle').addEventListener('click', function() {
+  //   var statisticalContainer = document.getElementById('statistical-container-wrapper');
+  //   if (statisticalContainer.style.display === "none") {
+  //     statisticalContainer.style.display = "block";
+  //   } else {
+  //     statisticalContainer.style.display = "none";
+  //   }
+  // });
+
+
+  // chỉ hiện thị 1 cái
+  var filterContainer = document.getElementById("filter-container-wrapper");
+  var statisticalContainer = document.getElementById('statistical-container-wrapper');
+
+  document.getElementById('filter-button').addEventListener('click', function() {
     if (filterContainer.style.display === "none") {
       filterContainer.style.display = "block";
+      statisticalContainer.style.display = "none"; // Ẩn statistical container nếu đang hiển thị
     } else {
       filterContainer.style.display = "none";
     }
   });
+
+  document.getElementById('statistical-toggle').addEventListener('click', function() {
+    if (statisticalContainer.style.display === "none") {
+      statisticalContainer.style.display = "block";
+      filterContainer.style.display = "none"; // Ẩn filter container nếu đang hiển thị
+    } else {
+      statisticalContainer.style.display = "none";
+    }
+  });
 </script>
+
 <!-- <script src="./js/saveButton.js"></script> -->
 </body>
 
 </html>
 <style>
   #filter-container-wrapper {
+    margin: 0 auto;
+    margin-left: 200px;
     z-index: 9999;
     /* hoặc bất kỳ giá trị nào phù hợp */
   }
