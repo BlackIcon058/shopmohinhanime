@@ -46,7 +46,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
   <!--item 1-->
   <div class="arrival">
     <div class="arrival-img">
-      <div class="arrival-price">Only $199.99</div>
+      <div class="arrival-price">Only 190000 VND</div>
       <img src="https://nekotwo.com/cdn/shop/files/2_25b2dce5-5d2d-400c-bfcb-df05b96e3486.jpg?v=1686760279">
     </div>
 
@@ -66,7 +66,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
     </div>
 
     <div class="arrival-img">
-      <div class="arrival-price">Only $24.99</div>
+      <div class="arrival-price">Only 24000 VND</div>
       <img src="https://nekotwo.com/cdn/shop/files/1_1549ef87-3359-43bf-a0c6-2def02992710.jpg?v=1697078116">
     </div>
   </div>
@@ -113,7 +113,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
           <img src="./admin/img/<?php echo $result['img'] ?>" alt="Product img">
         </div>
         <h2><?php echo $result['product_name'] ?></h2>
-        <div class="price">$ <?php echo $result['price'] ?></div>
+        <div class="price"><?php echo $result['price'] ?> VND</div>
       </a>
     <?php
     }

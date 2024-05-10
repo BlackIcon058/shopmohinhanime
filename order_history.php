@@ -58,33 +58,40 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                             <table class="table table-striped table-hover table-bordered">
                                 <thead>
                                     <tr>
-                                        <th  style="text-align: center;">Code Bill</th>
-                                        <th  style="text-align: center;">Status</th>
-                                        <th  style="text-align: center;">Order date</th>
-                                        <th  style="text-align: center;">View order details</th>
+                                        <th style="text-align: center;">Code Bill</th>
+                                        <th style="text-align: center;">Status</th>
+                                        <th style="text-align: center;">Order date</th>
+                                        <th style="text-align: center;">Total amount</th>
+
+                                        <th style="text-align: center;">View order details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($query as $ord) : ?>
-                                        <?php extract($ord) ?>
+                                    
+                                    <?php 
+                                    if ($allDonHang && mysqli_num_rows($allDonHang) > 0) {
+                                    while ($row = mysqli_fetch_assoc($allDonHang)) { ?>
                                         <tr>
-                                            <td><?php echo $order_code; ?></td>
+                                            <td><?php echo $row['order_code']; ?></td>
 
                                             <td>
                                                 <?php
-                                                if ($order_status == 1) echo "Confirmed";
-
-                                                else echo 'Delivered successfully';
+                                                if ($row['order_status'] == 1) {
+                                                    echo "Confirmed";
+                                                } else {
+                                                    echo "Delivered successfully";
+                                                }
                                                 ?>
                                             </td>
 
-                                            <td><?php echo $order_date; ?></td>
+                                            <td><?php echo $row['order_date']; ?></td>
+                                            <td><?php echo $row['total_order'];?> VND</td>
 
                                             <td>
-                                                <a href="view_order_details_history.php?order_code=<?php echo $order_code; ?>" class="edit" title="View" data-toggle="tooltip"><i class="flaticon-file"></i> View details</a>
+                                                <a href="view_order_details_history.php?order_code=<?php echo $row['order_code']; ?>" class="edit" title="View" data-toggle="tooltip"><i class="flaticon-file"></i> View details</a>
                                             </td>
                                         </tr>
-                                    <?php endforeach ?>
+                                    <?php }} ?>
                                 </tbody>
                             </table>
                             <br>
@@ -92,7 +99,8 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                             <div class="clearfix">
                                 <div class="pagination">
                                     <li class="btn-prev current-page">
-                                        <a href="?page=<?php echo ($current_page > 1) ? ($current_page - 1) : 1; ?>" class="page-link"><</a>
+                                        <a href="?page=<?php echo ($current_page > 1) ? ($current_page - 1) : 1; ?>" class="page-link">
+                                            <</a>
                                     </li>
                                     <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
                                         <li class="current-page <?php echo ($i == $current_page) ? 'pg-active' : 'pg-disable'; ?>">
@@ -105,9 +113,9 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                     </li>
                                 </div>
                             <?php
-                        }else{
+                        } else {
                             ?>
-                            <p>No orders yet!</p>
+                                <p>No orders yet!</p>
                             <?php
                         }
                             ?>

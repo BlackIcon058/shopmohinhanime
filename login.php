@@ -48,8 +48,8 @@ if (isset($_SESSION['EMAIL_USER_LOGIN'])) {
 			<div id="error" style="color: red; font-weight: bolder; text-align: center;"></div>
 			<div id="success" style="color: green; font-weight: bolder;  text-align: center;"></div>
 			<form class="contact-form" method="post">
-				<h5>Email</h5>
-				<input id="email" type="text" class="input-login-username" />
+				<h5>Username</h5>
+				<input id="name" type="text" class="input-login-username" />
 				<h5>Password</h5>
 				<input id="password" type="password" class="input-login-password" />
 				<button type="button" id="btn_login">Login</button>

@@ -11,7 +11,6 @@
         $phone = safe_value($con, $_POST['Phone']);
         $address = safe_value($con, $_POST['Address']);
 
-        
         $query = "select * from user_registers where email='$email'";
         $result = mysqli_query($con, $query);
 

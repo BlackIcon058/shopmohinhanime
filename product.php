@@ -25,13 +25,26 @@ $related_product = get_related_products($result['category_name']);
 
 			<div class="content">
 				<h1 class="name"><?php echo $result['product_name']; ?></h1>
-				<div class="price">$ <?php echo $result['price']; ?></div>
+				<div class="price"><?php echo $result['price']; ?> VND</div>
 				<div class="description"><?php echo $result['description']; ?></div>
 
 				<div class="product-configuration">
 					<!-- <input type="number" value="1" min="1" max="99"> -->
 					<input min="1" max="99" type="number" value="1" id="qty" name="qty" value="<?php echo $result['qty'] ?>">
-					<button type="submit" id="p_id" value="<?php echo $result['p_id'] ?>" class="btn buy-btn">Add to Cart</button>
+					<?php
+					if (!isset($_SESSION['USERNAME_USER_LOGIN'])) {
+					?>
+						<button type="button" onclick="alert('Vui lòng đăng nhập để thêm vào giỏ hàng!')" class="btn buy-btn">
+							<a href="login.php" style="color: #fff; text-decoration: none;">Add to Cart</a>
+						</button>
+					<?php
+					} else {
+					?>
+						<button type="submit" id="p_id" value="<?php echo $result['p_id'] ?>" class="btn buy-btn">Add to Cart</button>
+					<?php
+
+					}
+					?>
 				</div>
 
 				<script>
@@ -63,7 +76,7 @@ $related_product = get_related_products($result['category_name']);
 					<img src="./admin/img/<?php echo $row['img'] ?>" alt="Product img">
 				</div>
 				<h2><?php echo $row['product_name'] ?></h2>
-				<div class="price">$ <?php echo $row['price'] ?></div>
+				<div class="price"><?php echo $row['price'] ?> VND</div>
 			</a>
 		<?php
 		}
