@@ -118,10 +118,15 @@ function login_user_record() {
     $(document).on('click', '#btn_login', function () {
         var name = $('#name').val();
         var password = $('#password').val();
+
         if (name == "" || password == "") {
             $('#error').html('Please Fill in the Blanks');
+            return;
         }
-        else {
+        else if (!isValidName(name)) {
+            $('#error').html('Invalid Name Format');
+            return;
+        } else {
             $.ajax(
                 {
                     url: 'ajax/login_user.php',

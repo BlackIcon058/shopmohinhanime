@@ -3,25 +3,25 @@
 <?php require_once 'inc/nav.php';
 $cart = show_giohang($_SESSION['user_id']);
 
-if (!isset($_SESSION['EMAIL_USER_LOGIN']) || !($cart && $cart->num_rows > 0) || empty($_POST["name"]) || empty($_POST["phone"]) || empty($_POST["address"])) {
+if (!isset($_SESSION['EMAIL_USER_LOGIN']) || !($cart && $cart->num_rows > 0)) {
 	// header("location: index.php");
 	echo "<script>window.location.href = 'index.php';</script>";
 	exit;
 }
-
-$name = $_POST["name"];
-$phone = $_POST["phone"];
-$address = $_POST["address"];
-
-
-
+?>
+<?php
+$get_user_name = get_user_name($_SESSION['user_id']);
+$get_user_phone = get_user_phone($_SESSION['user_id']);
+$get_address_customer = get_user_address($_SESSION['user_id']);
+$row = mysqli_fetch_assoc($get_address_customer);
+$address = $row['address'];
 ?>
 
 <div class="row-check">
-
+	
 	<div class="small-container cart-page">
-		<h2>BILLING INFORMATION</h2>
-		<br>
+	<h2>SHIPPING INFORMATION</h2>
+	<br>
 		<h2>Cart</h2>
 		<br>
 		<table>
@@ -29,11 +29,11 @@ $address = $_POST["address"];
 			$total = 0;
 			$count_qty_product = 0;
 			?>
-			<tr>
-				<th>PRODUCT</th>
-				<th>QUANITY</th>
-				<th>TOTAL</th>
-			</tr>
+					<tr>
+						<th>PRODUCT</th>
+						<th>QUANITY</th>
+						<th>TOTAL</th>
+					</tr>
 			<?php
 			if ($cart && $cart->num_rows > 0) {
 				$total = 0;
@@ -94,46 +94,33 @@ $address = $_POST["address"];
 	<div class="col-70">
 		<div class="container">
 			<!-- <form action=""> -->
-			<form class="checkout-form" action="order.php" method="post">
+			<form class="checkout-form" action="checkout.php" method="post">
 				<div class="row">
 					<!-- <form class="checkout-form" action="order.php" method="post"> -->
 					<div class="col-50">
 
-						<h3>Shipping Info</h3>
+						<h3>Shipping Information</h3>
 
 						<label for="fname"><i class="fa fa-user"></i> Full Name</label>
-						<input style="font-weight: 700;" readonly type="text" id="fname" name="name" placeholder="" value="<?php echo $name ?>">
+						<input style="font-weight: 700;" type="text" id="fname" name="name" placeholder="" value="<?php echo $get_user_name ?>">
 
 						<label for="city"><i class="fa fa-institution"></i> Phone Number</label>
-						<input style="font-weight: 700;" readonly type="text" id="phone" name="phone" placeholder="" value="<?php echo $phone ?>">
-						<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-						<input type="text" id="adr" style="font-weight: 700;" name="address" readonly value="<?php echo $address ?>">
-						<br>
+						<input style="font-weight: 700;" type="text" id="phone" name="phone" placeholder="" value="<?php echo $get_user_phone ?>">
+						<!-- <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+							<input type="text" id="adr" name="address" readonly value="<?php echo $address ?>"> -->
+						<!-- <br> -->
 						<!-- <label for="" style="color: red; font-weight: bolder;"><i class="fa fa-user"></i> Please Choose Address to Cash Payment or Online Payment!</label> -->
-						<!-- <div id="additional-address">
+						<div id="additional-address">
 							<label for="use-default-address" class="checkbox-custom-label"><i class="fa fa-address-card-o"></i> Address</label>
-							<input type="text" readonly style="font-weight: bolder;" id="adr" name="address" readonly value="<?php echo $address ?>">
-
-						</div> -->
-
-						<div>
-							<label for="" class="checkbox-custom-label"><i class="fa fa-address-card-o"></i> Payment Method</label>
-							<div>
-								<select style="font-weight: 700; font-size: 15px;" id="payment" name="payment_method" style="width: 50%; height: 7%; margin-bottom: 20px; padding-bottom: 3px;" class="form-control" id="exampleSelect2">
-									<option value="default">-- Select your payment method --</option>
-									<option value="cash_payment">Payment upon delivery</option>
-									<option value="online_payment">Pay by VNPAY</option>
-								</select>
-							</div>
-
+							<input type="text" style="font-weight: bolder;" id="adr" name="address" readonly value="<?php echo $address ?>">
+							<button type="button" id="add-address-btn">Add Address</button>
+							<input type="text" id="additional-adr" name="additional_address" style="display: none; font-weight: bolder;" placeholder="Additional Address">
+							<button type="button" id="delete-address-btn" style="display: none;">Delete</button>
+							<button type="button" id="use-address-btn" style="display: none;">Use Address</button>
 						</div>
 
 						<br><br>
-						<!-- <label for="zipcode"><i class="fa fa-envelope"></i> Zipcode</label> -->
-						<input type="hidden" id="zipcode" name="zipcode" value="null" placeholder="">
-						<!-- <label for="country"><i class="fa fa-envelope"></i> Country</label> -->
-						<input type="hidden" id="zipcode" name="country" value="null" placeholder="">
-						<input type="hidden" value="free" name="fee_shipping" id="ship-1">
+										
 
 					</div>
 
@@ -159,28 +146,22 @@ $address = $_POST["address"];
 					<!-- </form> -->
 				</div>
 
-
+				<!-- <div>
+					<select id="payment" name="payment_method" style="width: 50%; height: 7%; margin-bottom: 20px; padding-bottom: 3px;" class="form-control" id="exampleSelect2">
+						<option value="default">-- Select your payment method --</option>
+						<option value="cash_payment">Payment upon delivery</option>
+						<option value="online_payment">Pay by VNPAY</option>
+					</select>
+				</div> -->
 
 				<!-- <button type="submit" name="cash_payment" value="cash_payment" class="btn">Check out</button>
 				<button type="submit" name="redirect" value="online_payment" class="btn">Check</button> -->
 				<!-- <a href="" class="btn"></a> -->
 
 				<!-- Nút submit cho phương thức thanh toán khi chọn "Payment upon delivery" -->
-				<button type="submit" id="cashPaymentBtn" name="cash_payment" value="cash_payment" class="btn" onclick="return validatePaymentMethod();">Check out</button>
+				<button type="submit" id="cashPaymentBtn" name="cash_payment" value="cash_payment" class="btn">Proceed to checkout</button>
 				<!-- Nút submit cho phương thức thanh toán khi chọn "Pay by VNPAY" -->
-				<button type="submit" id="onlinePaymentBtn" name="redirect" value="online_payment" class="btn" style="display: none;" onclick="return validatePaymentMethod();">Check out</button>
-				
-				<script>
-					function validatePaymentMethod() {
-						var paymentMethod = document.getElementById("payment").value;
-						if (paymentMethod === "default") {
-							alert("Vui lòng chọn phương thức thanh toán!");
-							return false; 
-						}
-
-						return true;
-					}
-				</script>
+				<!-- <button type="submit" id="onlinePaymentBtn" name="redirect" value="online_payment" class="btn" style="display: none;">Proceed to payment</button> -->
 			</form>
 		</div>
 	</div>

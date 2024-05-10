@@ -83,18 +83,30 @@ if (!isset($_SESSION['ADMIN'])) {
                     <?php
                     if ($row['product_sold'] > 0) {
                     ?>
-                      <a href="del_product.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-sm trash" title="Delete" onclick="confirmDelete(this, '<?php echo $row['product_name']; ?>'); return false;">
+                      <a href="hidden_product.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-sm trash" title="Delete" onclick="return confirmDelete();">
                         <i class="fas fa-trash-alt"></i>
                       </a>
+
+                      <script>
+                        function confirmDelete() {
+                          var productName = "<?php echo $row['product_name']; ?>";
+                          return confirm('Sản phẩm "' + productName + '" đã được bán ra. Hệ thống sẽ tiến hành ẩn sản phẩm trên trang web. Bạn có muốn tiếp tục không?');
+                        }
+                      </script>
+
+
+<!-- 
                       <script>
                         function confirmDelete(element, productName) {
+
+                          confirm('Bạn có chắc muốn xóa sản phẩm <?php echo $row['product_name']; ?> không?')
                           if (confirm('Sản phẩm "' + productName + '" đã được bán ra. Hệ thống sẽ tiến hành ẩn sản phẩm trên trang web. Bạn có muốn tiếp tục không?')) {
                             // Người dùng chọn "OK", thực hiện chuyển hướng
                             var url = 'hidden_product.php?id=<?php echo $row['p_id']; ?>';
                             window.location.href = url;
                           }
                         }
-                      </script>
+                      </script> -->
                     <?php
                     } else {
                     ?>

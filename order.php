@@ -6,8 +6,8 @@
 
 <?php
 $_SESSION['user_id'] = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
-$customer_id = $_SESSION['user_id'];
-// $cart = show_giohang($customer_id);
+
+$cart = show_giohang($_SESSION['user_id']);
 
 // echo $_POST['cash_payment'];
 // echo $_POST['online_payment'];
@@ -22,28 +22,28 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 $order_code = rand(0, 999999);
 $date = date("d/m/Y");
 $hour = date("h:i:sa");
+$_SESSION['order_code'] = $order_code;
 
 // echo $order_code;
 // Tính tổng tiền hóa đơn
 $order_total = 0;
 
-if (isset($_SESSION['shopping_cart'])) {
-    foreach ($_SESSION['shopping_cart'] as $key => $value) {
+if ($cart && $cart->num_rows > 0) {
+    foreach ($cart as $key => $value) {
         $data_order_detail = array(
-            'product_quantity' => $value['qty'],
+            'product_quantity' => $value['product_quantity'],
             'product_price' => $value['product_price'],
         );
         // Tính tổng số tiền của đơn hàng. Số tiền này là tiền $, đổi sang tiền việt là 
-        $order_total += $value['product_price'] * $value['qty'];
+        $order_total += $value['product_price'] * $value['product_quantity'];
     }
 }
 //Đổi từ tiền $ sang vnđ
-//$order_total = $order_total * 23000;
-// echo $order_total;
+// $order_total = $order_total;
+echo $order_total;
 
-if (isset($_POST['cash_payment']) && !empty($_POST['cash_payment'])) {
+if (isset($_POST['payment_method']) && $_POST['payment_method'] == 'cash_payment') {
     // Xử lý khi phương thức thanh toán là "Payment upon delivery" được chọn
-
     if (
         !empty($_POST["name"]) &&
         !empty($_POST["address"]) &&
@@ -85,12 +85,12 @@ if (isset($_POST['cash_payment']) && !empty($_POST['cash_payment'])) {
 
         insert_donhang($data_order);
 
-        if (isset($_SESSION['shopping_cart'])) {
-            foreach ($_SESSION['shopping_cart'] as $key => $value) {
+        if ($cart && $cart->num_rows > 0) {
+            foreach ($cart as $key => $value) {
                 $data_order_detail = array(
                     'order_code' => $order_code,
                     'product_id' => $value['product_id'],
-                    'product_quantity' => $value['qty'],
+                    'product_quantity' => $value['product_quantity'],
                     'product_price' => $value['product_price'],
                     'name' => $name,
                     'address' => $address,
@@ -102,8 +102,11 @@ if (isset($_POST['cash_payment']) && !empty($_POST['cash_payment'])) {
 
                 $success = insert_chitiet_donhang($data_order_detail);
             }
-            unset($_SESSION["shopping_cart"]);
-            // delete_giohang($customer_id);
+            // unset($_SESSION["shopping_cart"]);
+            delete_giohang($_SESSION['user_id']);
+            $_SESSION['message'] = 'Đặt hàng thành công!';
+            header('Location: thankyou.php?order_code=' . $order_code);
+            exit;
         }
     } else {
         echo '<script>alert("Vui lòng nhập đầy đủ thông tin đặt hàng!"); window.location.href="checkout.php";</script>';
@@ -179,17 +182,19 @@ if (isset($_POST['cash_payment']) && !empty($_POST['cash_payment'])) {
             'code' => '00', 'message' => 'success', 'data' => $vnp_Url
         );
         if (isset($_POST['redirect'])) {
-
-            $_SESSION['order_code'] = $order_code;
+            // $_SESSION['order_code'] = $order_code;
             header('Location: ' . $vnp_Url);
             die();
         } else {
             echo json_encode($returnData);
         }
         // vui lòng tham khảo thêm tại code demo
+        
     } else {
         echo '<script>alert("Vui lòng nhập đầy đủ thông tin đặt hàng!"); window.location.href="checkout.php";</script>';
     }
+} elseif (isset($_POST['payment_method']) && $_POST['payment_method'] == 'default') {
+    echo '<script>alert("Vui lòng chọn hình thức thanh toán!"); window.location.href="checkout.php";</script>';
 }
 
 

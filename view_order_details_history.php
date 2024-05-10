@@ -8,8 +8,10 @@ if (!isset($_SESSION['EMAIL_USER_LOGIN'])) {
 }
 ?>
 <?php
-if (isset($_GET['order_code'])) {
+if (isset($_GET['order_code']) && kiem_tra_ma_don_hang($_GET['order_code'])) {
     $order_details = xem_chitiet_donhang($_GET['order_code']);
+} else {
+    echo '<script>alert("Mã đơn hàng không hợp lệ!"); window.location.href="index.php";</script>';
 }
 ?>
 <?php

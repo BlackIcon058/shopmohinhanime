@@ -66,20 +66,42 @@ if (!isset($_SESSION['ADMIN'])) {
           <div class="row element-button">
             <div class="col-sm-2">
 
-              <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
-                Create new order</a>
+              <!-- <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
+                Create new order</a> -->
             </div>
             <div class="col-sm-2">
               <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> Print data</a>
             </div>
 
-            <span style="margin-left: 10px; cursor: pointer; background-color: #bfbeef; color: #000; border-radius: 5px; height: 33px; padding: 3px 5px 5px 5px;" id="filter-button">
+
+
+            <div class="col-sm-8">
+              <div style="display: flex; ">
+                <span style="width: 80px; font-weight: bolder; padding: 5px 5px 0 5px; color: #03009a; cursor: pointer;" id="statistical-toggle">Statistical</span>
+                <form id="statistical-container-wrapper" action="search_order_statistical.php" method="get" style="display: none; width: 300px; margin: 0 auto; text-align: center; border: 1px solid #000;border-radius: 10px; padding: 10px 10px;">
+                  <input class="form-control" name="from_date" type="date" placeholder="From date" style="margin-right: 5px; height: 30px;">
+                  <span style="margin-right: 5px;"> - </span>
+                  <input class="form-control" name="to_date" type="date" placeholder="To date" style="height: 30px;">
+                  <br>
+                  <button type="submit" style="margin-left: 5px;width: 150px;">Search</button>
+                </form>
+              </div>
+            </div>
+
+
+
+          </div>
+          <table class="table table-hover table-bordered">
+
+
+          <div style="margin-bottom: 100px;">
+          <span style="float: right; background-color: #bfbeef; color: #000; border-radius: 5px; height: 50px; padding: 3px 5px 5px 5px;" id="filter-button">
               <i class='bx bx-filter' id="filter-icon"></i>Filter
             </span>
 
-            <div class="col-sm-2" id="filter-container-wrapper" style="display: none; ">
+            <div class="col-sm-8" id="filter-container-wrapper" style="display: none; margin: 0 auto; margin-bottom: 20px;">
               <div class="filter-container">
-                <form class="header-search-form" action="search_order_advanced.php" method="get" style="display: flex; align-items: center;">
+                <form class="header-search-form" action="search_order_advanced.php" method="get" style="align-items: center;">
                   <div class="filter-body">
                     <div class="filter-group">
                       <label for="status" style="font-weight: bold;">Status</label>
@@ -90,10 +112,11 @@ if (!isset($_SESSION['ADMIN'])) {
                         <option value="2">Successful delivery</option>
                         <option value="3">Canceled order</option>
                       </select>
-
                     </div>
-                    <div class="filter-group">
+
+                    <div class="filter-group" style="margin-top: -20px;">
                       <br>
+
                       <label for="" style="font-weight: bold;">Order Date</label>
                       <div class="price-range">
                         <!-- <input name="min_price" value="" type="number" id="min-price" placeholder="Low" min="1"> -->
@@ -120,6 +143,7 @@ if (!isset($_SESSION['ADMIN'])) {
                         </div>
                       </div>
 
+
                       <div style="margin-top: 5px;">
                         <label for="district" style="font-weight: bold;">District</label>
                         <select id="district" style="margin-left: 10px;" name="district">
@@ -127,92 +151,76 @@ if (!isset($_SESSION['ADMIN'])) {
                         </select>
                       </div>
 
+                      <script>
+                        // Định nghĩa các quận tương ứng với mỗi thành phố
+                        // const districts = {
+                        //   "Ho Chi Minh": ["Quan 1", "Quan 2", "Quan 3"],
+                        //   "Ha Noi": ["Quan Dong Da", "Quan Hoan Kiem", "Quan Hai Ba Trung"],
+                        //   "Da Nang": ["Quan Thanh Khe", "Quan Hai Chau", "Quan Son Tra"]
+                        // };
+
+                        const districts = {
+                          "Ho Chi Minh": ["District 1 - Quan 1", "District 2 - Quan 2", "District 3 - Quan 3", "District 4 - Quan 4", "District 5 - Quan 5", "District 6 - Quan 6", "District 7 - Quan 7", "District 8 - Quan 8", "District 9 - Quan 9", "District 10 - Quan 10", "District 11 - Quan 11", "District 12 - Quan 12", "Binh Tan District - Quan Binh Tan", "Binh Thanh District - Quan Binh Thanh", "Go Vap District - Quan Go Vap", "Phu Nhuan District - Quan Phu Nhuan", "Tan Binh District - Quan Tan Binh", "Tan Phu District - Quan Tan Phu", "Thu Duc District - Quan Thu Duc"],
+                          "Ha Noi": ["Ba Dinh District - Quan Ba Dinh", "Hoan Kiem District - Quan Hoan Kiem", "Hai Ba Trung District - Quan Hai Ba Trung", "Dong Da District - Quan Dong Da", "Cau Giay District - Quan Cau Giay", "Thanh Xuan District - Quan Thanh Xuan", "Hoang Mai District - Quan Hoang Mai", "Long Bien District - Quan Long Bien", "Tay Ho District - Quan Tay Ho", "Nam Tu Liem District - Quan Nam Tu Liem", "Bac Tu Liem District - Quan Bac Tu Liem", "Ha Dong District - Quan Ha Dong", "Son Tay District - Quan Son Tay"],
+                          "Da Nang": ["Hai Chau District - Quan Hai Chau", "Thanh Khe District - Quan Thanh Khe", "Son Tra District - Quan Son Tra", "Ngu Hanh Son District - Quan Ngu Hanh Son", "Lien Chieu District - Quan Lien Chieu", "Cam Le District - Quan Cam Le", "Hoa Vang District - Quan Hoa Vang"]
+                        };
+
+                        document.getElementById("city").addEventListener("change", function() {
+                          const city = this.value;
+                          const districtSelect = document.getElementById("district");
+                          districtSelect.innerHTML = "";
+                          districts[city].forEach(function(district) {
+                            const option = document.createElement("option");
+                            option.value = district;
+                            option.textContent = district;
+                            districtSelect.appendChild(option);
+                          });
+                        });
+                      </script>
                       <label>
                         <br>
                         <button type="submit" style="background-color: #019af2ff; border: none; padding: 5px; font: inherit; cursor: pointer; color: #fff;">Search</button>
                       </label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <script>
-              // Định nghĩa các quận tương ứng với mỗi thành phố
-              // const districts = {
-              //   "Ho Chi Minh": ["Quan 1", "Quan 2", "Quan 3"],
-              //   "Ha Noi": ["Quan Dong Da", "Quan Hoan Kiem", "Quan Hai Ba Trung"],
-              //   "Da Nang": ["Quan Thanh Khe", "Quan Hai Chau", "Quan Son Tra"]
-              // };
-
-              const districts = {
-                "Ho Chi Minh": ["District 1 - Quan 1", "District 2 - Quan 2", "District 3 - Quan 3", "District 4 - Quan 4", "District 5 - Quan 5", "District 6 - Quan 6", "District 7 - Quan 7", "District 8 - Quan 8", "District 9 - Quan 9", "District 10 - Quan 10", "District 11 - Quan 11", "District 12 - Quan 12", "Binh Tan District - Quan Binh Tan", "Binh Thanh District - Quan Binh Thanh", "Go Vap District - Quan Go Vap", "Phu Nhuan District - Quan Phu Nhuan", "Tan Binh District - Quan Tan Binh", "Tan Phu District - Quan Tan Phu", "Thu Duc District - Quan Thu Duc"],
-                "Ha Noi": ["Ba Dinh District - Quan Ba Dinh", "Hoan Kiem District - Quan Hoan Kiem", "Hai Ba Trung District - Quan Hai Ba Trung", "Dong Da District - Quan Dong Da", "Cau Giay District - Quan Cau Giay", "Thanh Xuan District - Quan Thanh Xuan", "Hoang Mai District - Quan Hoang Mai", "Long Bien District - Quan Long Bien", "Tay Ho District - Quan Tay Ho", "Nam Tu Liem District - Quan Nam Tu Liem", "Bac Tu Liem District - Quan Bac Tu Liem", "Ha Dong District - Quan Ha Dong", "Son Tay District - Quan Son Tay"],
-                "Da Nang": ["Hai Chau District - Quan Hai Chau", "Thanh Khe District - Quan Thanh Khe", "Son Tra District - Quan Son Tra", "Ngu Hanh Son District - Quan Ngu Hanh Son", "Lien Chieu District - Quan Lien Chieu", "Cam Le District - Quan Cam Le", "Hoa Vang District - Quan Hoa Vang"]
-              };
-
-              document.getElementById("city").addEventListener("change", function() {
-                const city = this.value;
-                const districtSelect = document.getElementById("district");
-                districtSelect.innerHTML = "";
-                districts[city].forEach(function(district) {
-                  const option = document.createElement("option");
-                  option.value = district;
-                  option.textContent = district;
-                  districtSelect.appendChild(option);
-                });
-              });
-            </script>
-
-            <div class="col-sm-2">
-
-              <form action="search_order_statistical.php" method="get">
-                <div style="display: flex; margin-left: 200px;">
-                  <span style="width: 80px; font-weight: bolder; padding: 5px 5px 0 5px; color: #03009a;">Statistical</span>
-                  <input class="form-control" name="from_date" type="date" placeholder="From date" style="margin-right: 5px; height: 30px;">
-                  <span style="margin-right: 5px;"> - </span>
-                  <input class="form-control" name="to_date" type="date" placeholder="To date" style="height: 30px;">
-                  <button type="submit" style="margin-left: 5px;width: 150px;">Search</button>
-                </div>
-              </form>
-            </div>
           </div>
-          <table class="table table-hover table-bordered">
-            <thead>
-              <?php
-              $i = 0;
-              ?>
-
-              <h4>5 Customers with the highest purchase level <span><?php echo '(' . $from_date . ')'; ?></span> to <span><?php echo '(' . $to_date . ')'; ?></span></h4>
-              <tr>
-                <!-- <th width="10"><input type="checkbox" id="all"></th> -->
-                <th>
-                  Rank
-                </th>
-                <th>Customer Name</th>
-                <th>Total Purchase </th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($query_top_user as $info) : ?>
-                <tr>
-                  <td>
-                    <?php
-                    $i++;
-                    echo $i;
-                    ?>
-                  </td>
-                  <td><?php echo $info['customer_name']; ?></td>
-                  <!-- <td width="10"><input type="checkbox" name="check1" value="1"></td> -->
-                  <td>$<?php echo $info['total_purchase']; ?></td>
-
-                </tr>
+            
 
 
 
-              <?php endforeach ?>
-            </tbody>
+                      <thead>
+                        <?php
+                        $i = 0;
+                        ?>
+
+                        <h4>5 Customers with the highest purchase level <span><?php echo '(' . $from_date . ')'; ?></span> to <span><?php echo '(' . $to_date . ')'; ?></span></h4>
+                        <tr>
+                          <!-- <th width="10"><input type="checkbox" id="all"></th> -->
+                          <th>
+                            Rank
+                          </th>
+                          <th>Customer Name</th>
+                          <th>Total Purchase </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($query_top_user as $info) : ?>
+                          <tr>
+                            <td>
+                              <?php
+                              $i++;
+                              echo $i;
+                              ?>
+                            </td>
+                            <td><?php echo $info['customer_name']; ?></td>
+                            <!-- <td width="10"><input type="checkbox" name="check1" value="1"></td> -->
+                            <td><?php echo $info['total_purchase']; ?> VND</td>
+
+                          </tr>
+
+
+
+                        <?php endforeach ?>
+                      </tbody>
           </table>
 
           <div style="margin-bottom: 100px;"></div>
@@ -253,7 +261,7 @@ if (!isset($_SESSION['ADMIN'])) {
                       if (!empty($order_for_user)) {
                         foreach ($order_for_user as $order) {
                       ?>
-                          <li><span style="font-weight: bolder;">Order code:</span> <?php echo $order['order_code']; ?> - <span style="font-weight: bolder;">Total Order</span>: $<?php echo  $order['total_amount']; ?> - <span style="font-weight: bolder;">Order date</span>: <?php echo $order['order_date']; ?> - <a href="order_details_master.php?order_code=<?php echo $order['order_code']; ?>">View Detail</a></li>
+                          <li><span style="font-weight: bolder;">Order code:</span> <?php echo $order['order_code']; ?> - <span style="font-weight: bolder;">Total Order</span>: VND<?php echo  $order['total_amount']; ?> - <span style="font-weight: bolder;">Order date</span>: <?php echo $order['order_date']; ?> - <a href="order_details_master.php?order_code=<?php echo $order['order_code']; ?>">View Detail</a></li>
 
                           <br>
                       <?php
@@ -412,12 +420,25 @@ if (!isset($_SESSION['ADMIN'])) {
     })
   });
 
-  document.getElementById("filter-button").addEventListener("click", function() {
-    var filterContainer = document.getElementById("filter-container-wrapper");
+ // chỉ hiện thị 1 cái
+ var filterContainer = document.getElementById("filter-container-wrapper");
+  var statisticalContainer = document.getElementById('statistical-container-wrapper');
+
+  document.getElementById('filter-button').addEventListener('click', function() {
     if (filterContainer.style.display === "none") {
       filterContainer.style.display = "block";
+      statisticalContainer.style.display = "none"; // Ẩn statistical container nếu đang hiển thị
     } else {
       filterContainer.style.display = "none";
+    }
+  });
+
+  document.getElementById('statistical-toggle').addEventListener('click', function() {
+    if (statisticalContainer.style.display === "none") {
+      statisticalContainer.style.display = "block";
+      filterContainer.style.display = "none"; // Ẩn filter container nếu đang hiển thị
+    } else {
+      statisticalContainer.style.display = "none";
     }
   });
 </script>
@@ -426,8 +447,12 @@ if (!isset($_SESSION['ADMIN'])) {
 
 </html>
 <style>
-  #filter-container-wrapper {
-    z-index: 9999;
+ #filter-container-wrapper {
+    border: 1px solid #000;
+    border-radius: 10px;
+    /* margin: 0 auto; */
+    /* margin-left: 200px; */
+    /* z-index: 9999; */
     /* hoặc bất kỳ giá trị nào phù hợp */
   }
 

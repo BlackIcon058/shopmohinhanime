@@ -4,60 +4,39 @@
 <?php
 $_SESSION['user_id'] = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
 $customer_id = $_SESSION['user_id'];
-$cart = show_giohang($customer_id);
-// if ($customer_id == null) {
-    
-    if (isset($_POST['delete_cart'])) {
-        if (isset($_SESSION["shopping_cart"])) {
-            foreach ($_SESSION["shopping_cart"] as $key => $value) {
-                if ($_SESSION["shopping_cart"][$key]['product_id'] == $_POST['delete_cart']) {
-                    unset($_SESSION["shopping_cart"][$key]);
-                }
-                // include 'view/cart.php';
-            }
-        } else {
-            // include 'view/cart.php';
-        }
+
+if (isset($_POST['delete_cart'])) {
+    $product_id = $_POST['product_id'];
+    $deleteItemCart = "DELETE FROM cart 
+                WHERE customer_id = '$customer_id' AND product_id = '$product_id'";
+    $resultDelete = mysqli_query($con, $deleteItemCart);
+    if (!$resultDelete) {
+        echo "Lỗi: " . mysqli_error($con);
+        $_SESSION['message'] = 'Lỗi!';
     } else {
-        foreach ($_POST["qty"] as $key => $qty) {
-            foreach ($_SESSION["shopping_cart"] as $session => $value) {
-                if ($value['product_id'] == $key && $qty >= 1) {
-                    $_SESSION["shopping_cart"][$session]['qty'] = $qty;
-                } elseif ($value['product_id'] == $key && $qty <= 0) {
-                    unset($_SESSION["shopping_cart"][$session]);
-                }
-            }
+        echo "Đã xóa sản phẩm trong giỏ hàng!";
+        $_SESSION['message'] = 'Đã xóa sản phẩm trong giỏ hàng!';
+    }
+} else {
+    $product_id = $_POST['product_id'];
+    $product_quantity = $_POST['product_quantity'];
+    $cartExist = "SELECT * FROM cart 
+                WHERE customer_id = '$customer_id' AND product_id = '$product_id'";
+    $result = mysqli_query($con, $cartExist);
+    if (mysqli_num_rows($result) > 0) {
+        $updateQuery = "UPDATE cart 
+                    SET product_quantity = '$product_quantity' 
+                    WHERE customer_id = '$customer_id' AND product_id = '$product_id'";
+        $resultUpdate = mysqli_query($con, $updateQuery);
+        if (!$resultUpdate) {
+            echo "Lỗi: " . mysqli_error($con);
+            $_SESSION['message'] = 'Lỗi!';
+        } else {
+            echo "Cập nhật số lượng sản phẩm thành công!";
+            $_SESSION['message'] = 'Cập nhật số lượng sản phẩm thành công!';
         }
     }
-// } else {
-
-//     if (isset($_POST['delete_cart'])) {
-//         if (isset($_SESSION["shopping_cart"])) {
-//             foreach ($_SESSION["shopping_cart"] as $key => $value) {
-//                 if ($_SESSION["shopping_cart"][$key]['product_id'] == $_POST['delete_cart']) {
-//                     unset($_SESSION["shopping_cart"][$key]);
-//                     // delete_sanpham_giohang($_POST['delete_cart'], $customer_id);
-//                 }
-//                 // include 'view/cart.php';
-//             }
-//         } else {
-//             // include 'view/cart.php';
-//         }
-//     } else {
-//         foreach ($_POST["qty"] as $key => $qty) {
-//             foreach ($_SESSION["shopping_cart"] as $session => $value) {
-//                 if ($value['product_id'] == $key && $qty >= 1) {
-//                     $_SESSION["shopping_cart"][$session]['qty'] = $qty;
-//                     // thaydoisoluong_sanpham_giohang($key, $customer_id, $qty);
-//                 } elseif ($value['product_id'] == $key && $qty <= 0) {
-//                     unset($_SESSION["shopping_cart"][$session]);
-//                     // delete_sanpham_giohang($value['product_id'], $customer_id);
-//                 }
-//             }
-//         }
-//     }
-// }
+}
 
 header("location: cart.php");
-
 ?>

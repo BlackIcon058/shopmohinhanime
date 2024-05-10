@@ -21,9 +21,12 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($con, $query);
 
     if ($result) {
+        // echo 'thanh cong';
         echo '<script>alert("Sản phẩm đã được ẩn khỏi trang web.");</script>';
         header("location: manage_product.php");
         exit;
+    }else{
+        echo 'that bai!';
     }
 
     // } else {

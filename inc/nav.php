@@ -5,6 +5,7 @@ $cat = display_cat();
 $cart_value = total_cart_num();
 ?>
 
+
 <header>
   <!--LOGO SHOP-->
   <a href="index.php" class="logo"><i class='bx bxl-flutter'></i>FIGURE SHOP</a>
@@ -23,9 +24,9 @@ $cart_value = total_cart_num();
     <?php
     if (isset($_SESSION['EMAIL_USER_LOGIN'])) {
     ?>
-          <a href="order_history.php">
-      <i class='bx bx-file' id="file-icon" style="color: var(--text-color);"></i>
-    </a>
+      <a href="order_history.php">
+        <i class='bx bx-file' id="file-icon" style="color: var(--text-color);"></i>
+      </a>
     <?php
     }
     ?>

@@ -90,7 +90,7 @@ function insert_giohang($data_cart)
         isset($data_cart['product_title']) &&
         isset($data_cart['product_price']) &&
         isset($data_cart['product_image']) &&
-        isset($data_cart['product_quantity']) &&
+        isset($data_cart['qty']) &&
         isset($data_cart['customer_id'])
     ) {
         $product_id = $data_cart['product_id'];
@@ -112,7 +112,6 @@ function insert_giohang($data_cart)
     }
 }
 
-
 function update_quantity_soluong_giohang($product_id, $customer_id)
 {
     global $con;
@@ -130,8 +129,9 @@ function delete_sanpham_giohang($product_id, $customer_id)
 {
     global $con;
 
-    $sql = "DELETE FROM `cart`
-        WHERE product_id = $product_id AND customer_id = $customer_id";
+    $sql = "DELETE * FROM `cart`
+            INNER JOIN products ON cart.product_id = products.p_id
+        WHERE product_id = $product_id AND customer_id = $customer_id AND products.status = '1'";
     $result = mysqli_query($con, $sql);
 
     if (!$result) {
@@ -168,8 +168,10 @@ function thaydoisoluong_sanpham_giohang($product_id, $customer_id, $qty)
 function show_giohang($customer_id)
 {
     global $con;
-
-    $sql = "SELECT * FROM cart WHERE customer_id = $customer_id";
+    $sql = "SELECT cart.product_id ,cart.product_quantity, cart.product_price, products.product_name as product_title, products.img as product_image
+            FROM cart 
+            INNER JOIN products ON cart.product_id = products.p_id
+            WHERE cart.customer_id = $customer_id AND products.status = '1'";
     $listAll = mysqli_query($con, $sql);
     return $listAll;
 }
@@ -178,8 +180,6 @@ function show_giohang($customer_id)
 
 function insert_donhang($data_order)
 {
-
-
     global $con;
 
     if (
@@ -206,7 +206,8 @@ function insert_donhang($data_order)
 function insert_chitiet_donhang($data_order_detail)
 {
     global $con;
-    if (isset($data_order_detail['order_code']) &&
+    if (
+        isset($data_order_detail['order_code']) &&
         isset($data_order_detail['product_id']) &&
         isset($data_order_detail['product_quantity']) &&
         isset($data_order_detail['product_price']) &&
@@ -236,11 +237,11 @@ function insert_chitiet_donhang($data_order_detail)
 
         if (!$result) {
             echo "Lỗi: " . mysqli_error($con);
-        }else{
-            echo '<script>alert("Đặt hàng thành công!"); window.location.href="index.php";</script>';
+        } else {
+            echo "Đặt hàng thành công!";
         }
     } else {
-        echo "Lỗi: Dữ liệu không đủ."; 
+        echo "Lỗi: Dữ liệu không đủ.";
     }
 }
 
@@ -277,8 +278,47 @@ function xem_chitiet_donhang($order_code)
     return $listAll;
 }
 
+function kiem_tra_ma_don_hang($order_code)
+{
+    global $con;
+    $sql = "SELECT COUNT(*) AS count FROM order_detail WHERE order_code = '$order_code'";
+
+    $result = mysqli_query($con, $sql);
+
+    if (!$result) {
+        echo "Lỗi: " . mysqli_error($con);
+        return false;
+    }
+
+    $row = mysqli_fetch_assoc($result);
+    $count = $row['count'];
+
+    // Trả về true nếu có mã đơn hàng trong bảng order_detail và false nếu không
+    return $count > 0;
+}
+
+function get_order_code($vnp_banktranno)
+{
+    global $con;
+
+    // Truy vấn để lấy giá trị của order_code từ bảng vnpay dựa trên vnp_BankTranNo
+    $sql = "SELECT order_code FROM vnpay WHERE vnp_BankTranNo = '$vnp_banktranno'";
+
+    // Thực thi truy vấn
+    $result = mysqli_query($con, $sql);
+
+    // Kiểm tra và trả về giá trị của order_code nếu tồn tại, null nếu không
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row['order_code'];
+    } else {
+        return null;
+    }
+}
+
+
 ////////////// search product by name /////////////////
-function search_product($keyword){
+function search_product($keyword)
+{
     global $con;
     $sql = "SELECT * FROM `products` WHERE product_name like '%$keyword%'";
     $result = mysqli_query($con, $sql);
@@ -297,7 +337,8 @@ function total_cart_num()
 
 
 // ////////// view customers
-function get_user_registers($customer_id) {
+function get_user_registers($customer_id)
+{
     global $con;
     $sql = "SELECT * FROM `user_registers` where id = '$customer_id'";
     $result = mysqli_query($con, $sql);
@@ -305,14 +346,16 @@ function get_user_registers($customer_id) {
 }
 
 
-function get_user_address($customer_id) {
+function get_user_address($customer_id)
+{
     global $con;
     $sql = "SELECT address FROM `user_registers` WHERE id = '$customer_id'";
     $result = mysqli_query($con, $sql);
     return $result;
 }
 
-function get_user_name($customer_id) {
+function get_user_name($customer_id)
+{
     global $con;
     $sql = "SELECT name FROM `user_registers` WHERE id = '$customer_id'";
     $result = mysqli_query($con, $sql);
@@ -324,7 +367,8 @@ function get_user_name($customer_id) {
     }
 }
 
-function get_user_phone($customer_id) {
+function get_user_phone($customer_id)
+{
     global $con;
     $sql = "SELECT phone FROM `user_registers` WHERE id = '$customer_id'";
     $result = mysqli_query($con, $sql);
@@ -337,7 +381,8 @@ function get_user_phone($customer_id) {
 }
 
 
-function get_info_vnpay($vnp_banktranno){
+function get_info_vnpay($vnp_banktranno)
+{
     global $con;
     $sql = "SELECT * FROM vnpay WHERE vnp_banktranno = '$vnp_banktranno'";
     $result = mysqli_query($con, $sql);
@@ -350,7 +395,8 @@ function get_info_vnpay($vnp_banktranno){
     }
 }
 
-function check_vnp_banktranno_exist($vnp_banktranno) {
+function check_vnp_banktranno_exist($vnp_banktranno)
+{
     global $con;
     $sql = "SELECT COUNT(*) AS count FROM vnpay WHERE vnp_banktranno = '$vnp_banktranno'";
     $result = mysqli_query($con, $sql);
@@ -359,7 +405,8 @@ function check_vnp_banktranno_exist($vnp_banktranno) {
     return $row['count'] > 0;
 }
 
-function getMinPrice() {
+function getMinPrice()
+{
     global $con;
     $sql = "SELECT MIN(price) AS min_price FROM products";
     $query = mysqli_query($con, $sql);
@@ -367,7 +414,8 @@ function getMinPrice() {
     return isset($result['min_price']) ? $result['min_price'] : 0;
 }
 
-function getMaxPrice() {
+function getMaxPrice()
+{
     global $con;
     $sql = "SELECT MAX(price) AS max_price FROM products";
     $query = mysqli_query($con, $sql);
@@ -378,7 +426,8 @@ function getMaxPrice() {
 
 // check hinh thuc thanh toan
 
-function check_payment_method($order_code){
+function check_payment_method($order_code)
+{
     global $con;
     $sql = "SELECT * FROM vnpay WHERE order_code = '$order_code'";
     $result = mysqli_query($con, $sql);
@@ -390,7 +439,8 @@ function check_payment_method($order_code){
     }
 }
 
-function get_status_order($order_code){
+function get_status_order($order_code)
+{
     global $con;
     $sql = "SELECT order_status FROM `order` WHERE order_code = '$order_code'";
     $result = mysqli_query($con, $sql);
@@ -402,6 +452,3 @@ function get_status_order($order_code){
         return null;
     }
 }
-
-?>
-

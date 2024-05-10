@@ -31,7 +31,20 @@ $related_product = get_related_products($result['category_name']);
 				<div class="product-configuration">
 					<!-- <input type="number" value="1" min="1" max="99"> -->
 					<input min="1" max="99" type="number" value="1" id="qty" name="qty" value="<?php echo $result['qty'] ?>">
-					<button type="submit" id="p_id" value="<?php echo $result['p_id'] ?>" class="btn buy-btn">Add to Cart</button>
+					<?php
+					if (!isset($_SESSION['USERNAME_USER_LOGIN'])) {
+					?>
+						<button type="button" onclick="alert('Vui lòng đăng nhập để thêm vào giỏ hàng!')" class="btn buy-btn">
+							<a href="login.php" style="color: #fff; text-decoration: none;">Add to Cart</a>
+						</button>
+					<?php
+					} else {
+					?>
+						<button type="submit" id="p_id" value="<?php echo $result['p_id'] ?>" class="btn buy-btn">Add to Cart</button>
+					<?php
+
+					}
+					?>
 				</div>
 
 				<script>
