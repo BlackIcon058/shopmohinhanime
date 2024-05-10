@@ -153,8 +153,8 @@ if (isset($_GET['order_code'])) {
                                     <td>
                                         <input type="text" readonly value="<?php echo $product_quantity ?>" name="product_sales_quantity" class="input_qty order_qty_<?php echo $p_id; ?>">
                                     </td>
-                                    <td><?php echo $product_price ?> $</td>
-                                    <td><?php echo $product_quantity * $product_price; ?>$</td>
+                                    <td><?php echo $product_price ?> VND</td>
+                                    <td><?php echo $product_quantity * $product_price; ?>VND</td>
                                     <!-- <td>Special</td> -->
                                 </tr>
                                 <?php

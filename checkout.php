@@ -9,10 +9,13 @@ if (!isset($_SESSION['EMAIL_USER_LOGIN']) || !($cart && $cart->num_rows > 0) || 
 	exit;
 }
 
-$name = $_POST["name"];
-$phone = $_POST["phone"];
-$address = $_POST["address"];
+// $name = $_POST["name"];
+// $phone = $_POST["phone"];
+// $address = $_POST["address"];
 
+$_SESSION['name_checkout'] = $_POST["name"];
+$_SESSION['phone_checkout'] =$_POST["phone"];
+$_SESSION['address_checkout'] = $_POST["address"];
 
 
 ?>
@@ -102,12 +105,12 @@ $address = $_POST["address"];
 						<h3>Shipping Info</h3>
 
 						<label for="fname"><i class="fa fa-user"></i> Full Name</label>
-						<input style="font-weight: 700;" readonly type="text" id="fname" name="name" placeholder="" value="<?php echo $name ?>">
+						<input style="font-weight: 700;" readonly type="text" id="fname" name="name" placeholder="" value="<?php echo $_SESSION['name_checkout'] ?>">
 
 						<label for="city"><i class="fa fa-institution"></i> Phone Number</label>
-						<input style="font-weight: 700;" readonly type="text" id="phone" name="phone" placeholder="" value="<?php echo $phone ?>">
+						<input style="font-weight: 700;" readonly type="text" id="phone" name="phone" placeholder="" value="<?php echo $_SESSION['phone_checkout'] ?>">
 						<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-						<input type="text" id="adr" style="font-weight: 700;" name="address" readonly value="<?php echo $address ?>">
+						<input type="text" id="adr" style="font-weight: 700;" name="address" readonly value="<?php echo $_SESSION['address_checkout'] ?>">
 						<br>
 						<!-- <label for="" style="color: red; font-weight: bolder;"><i class="fa fa-user"></i> Please Choose Address to Cash Payment or Online Payment!</label> -->
 						<!-- <div id="additional-address">
