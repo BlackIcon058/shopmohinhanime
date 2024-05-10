@@ -58,9 +58,12 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
         $table_order_details = "order_detail";
         $info_customer = get_user_registers($_SESSION['user_id']);
         $row = mysqli_fetch_assoc($info_customer);
+        
         $name = $row['name'];
-        $address = $row['address'];
-        $phone = $row['phone'];
+        // $address = $row['address'];
+        // $phone = $row['phone'];
+
+
         $country = 'null';
         $zipcode = 'null';
         $fee_shipping = 'free';
@@ -87,11 +90,11 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
               'product_id' => $value['product_id'],
               'product_quantity' => $value['product_quantity'],
               'product_price' => $value['product_price'],
-              'name' => $name,
-              'address' => $address,
+              'name' => $_SESSION['name_checkout'],
+              'address' => $_SESSION['address_checkout'],
               'country' => $country,
               'zipcode' => $zipcode,
-              'phone' => $phone,
+              'phone' => $_SESSION['phone_checkout'],
               'fee_shipping' => $fee_shipping,
             );
 

@@ -49,7 +49,7 @@ function isValidPhone(phone) {
 
 // Hàm kiểm tra định dạng tên
 function isValidName(name) {
-    var regex = /^[a-zA-Z0-9]+$/; // chứa ký tự a-z, A-Z và số từ 0-9
+    var regex = /^[a-z0-9]+$/; // chứa ký tự a-z, A-Z và số từ 0-9
     return regex.test(name);
 }
 
