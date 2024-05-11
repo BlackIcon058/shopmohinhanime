@@ -215,11 +215,11 @@ if (!isset($_SESSION['ADMIN'])) {
                       </span>
                     <?php
 
-                    } else {
+                    } elseif ($order_status == 3) {
                     ?>
                       <span class="badge bg-danger">
                         <?php
-                        echo 'Cancel order';
+                        echo "Cancel order";
                         ?>
                       </span>
                     <?php

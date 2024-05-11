@@ -52,12 +52,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `cat_name`, `status`) VALUES
-(16, 'special', 1),
-(17, 'onmyoji', 1),
-(18, 'estream', 1),
-(19, 'aniplex', 1),
-(20, 'alter', 1),
-(21, 'bandaispirits', 1);
+(16, 'SPECIAL', 1),
+(17, 'ONMYOJI', 1),
+(18, 'ESTREAM', 1),
+(19, 'ANIPLEX', 1),
+(20, 'ALTER', 1),
+(21, 'BANDAISPIRITS', 1);
 
 -- --------------------------------------------------------
 

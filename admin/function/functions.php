@@ -215,11 +215,11 @@ function save_customers()
 
         $address = safe_value($con, $_POST['cus_address']);
         $phone = safe_value($con, $_POST['cus_phone']);
-        $dateofbirth = safe_value($con, $_POST['cus_date']);
+        //$dateofbirth = safe_value($con, $_POST['cus_date']);
         $sex = safe_value($con, $_POST['cus_sex']);
         // echo $username." ".$password;
 
-        if (empty($username) || empty($email) || empty($password) || empty($address) || empty($phone) || empty($dateofbirth)) {
+        if (empty($username) || empty($email) || empty($password) || empty($address) || empty($phone)) {
             set_message(display_error("Please Fill in the Blanks"));
         } elseif (!preg_match('/^0\d{9,10}$/', $phone)) {
             set_message(display_error("Please Check Phone Number"));
@@ -237,7 +237,7 @@ function save_customers()
             } elseif (mysqli_num_rows($result1))
                 set_message(display_error("The customer name already exists, please change!"));
             else {
-                $query = "INSERT INTO user_registers (name, email, address, phone, password, dateofbirth, sex, status) VALUES ('$username', '$email', '$address', '$phone', '$password_hashed', '$dateofbirth', '$sex', '1')";
+                $query = "INSERT INTO user_registers (name, email, address, phone, password, sex, status) VALUES ('$username', '$email', '$address', '$phone', '$password_hashed', '$sex', '1')";
                 $result = mysqli_query($con, $query);
                 if ($result) {
                     set_message(display_success("Successfully registered customer account"));

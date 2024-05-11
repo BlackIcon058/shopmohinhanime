@@ -110,7 +110,7 @@ if (!isset($_SESSION['ADMIN'])) {
                   <td><?php
                       if ($row['status'] == 1) {
                       ?>
-                      <a class="btn btn-success  btn-sm trash" style="background-color: #9df99d;" href="user_list.php?opr=deactive&id=<?php echo $row['id']; ?>" title="Unlock" onclick="return confirm('Bạn có muốn khóa tài khoản có username <?php echo $row['name']; ?> không?');">
+                      <a class="btn btn-success  btn-sm trash" style="background-color: #9df99d;" href="user_list.php?opr=deactive&id=<?php echo $row['id']; ?>" title="Unlock" onclick="return confirm('Do you want to lock the account with username <?php echo $row['name']; ?> ?');">
                         <i style="color: #000" class="fas fa-lock-open"></i>
                       </a>
 
@@ -122,7 +122,7 @@ if (!isset($_SESSION['ADMIN'])) {
 
                       </button> -->
 
-                      <a class="btn btn-primary btn-sm trash" style="background-color: #f50e3dff;" href="user_list.php?opr=active&id=<?php echo $row['id']; ?>" title="Lock" onclick="return confirm('Bạn có muốn mở khóa tài khoản có username <?php echo $row['name']; ?> không?');">
+                      <a class="btn btn-primary btn-sm trash" style="background-color: #f50e3dff;" href="user_list.php?opr=active&id=<?php echo $row['id']; ?>" title="Lock" onclick="return confirm('Do you want to unlock the account with username <?php echo $row['name']; ?> ?');">
                         <i style="color: #000" class="fas fa-lock"></i>
                       </a>
 

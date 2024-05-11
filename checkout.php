@@ -276,7 +276,7 @@ $_SESSION['address_checkout'] = $_POST["address"];
 
 		useAddressBtn.addEventListener('click', function() {
 			if (additionalAddressInput.value !== '') {
-				var confirmation = confirm("Bạn có muốn chọn địa chỉ mới cho đơn hàng này!");
+				var confirmation = confirm("Do you want to choose a new address for this order?");
 				if (confirmation) {
 					mainAddressInput.value = additionalAddressInput.value;
 					additionalAddressInput.style.display = 'none';
@@ -284,7 +284,7 @@ $_SESSION['address_checkout'] = $_POST["address"];
 					useAddressBtn.style.display = 'none';
 				}
 			} else {
-				alert("Vui lòng nhập địa chỉ mới trước khi chọn!");
+				alert("Please enter a new address before selecting!");
 			}
 		});
 	});
