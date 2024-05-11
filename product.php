@@ -34,7 +34,7 @@ $related_product = get_related_products($result['category_name']);
 					<?php
 					if (!isset($_SESSION['USERNAME_USER_LOGIN'])) {
 					?>
-						<button type="button" onclick="alert('Vui lòng đăng nhập để thêm vào giỏ hàng!')" class="btn buy-btn">
+						<button type="button" onclick="alert('Please log in to add product!')" class="btn buy-btn">
 							<a href="login.php" style="color: #fff; text-decoration: none;">Add to Cart</a>
 						</button>
 					<?php
@@ -53,7 +53,7 @@ $related_product = get_related_products($result['category_name']);
 							var quantity = document.getElementById("qty").value;
 							if (quantity <= 0) {
 								event.preventDefault();
-								alert("Vui lòng chọn số lượng sản phẩm ít nhất là 1!");
+								alert("Please select quantity of product at least 1!");
 								document.getElementById("qty").value = 1;
 							}
 						});

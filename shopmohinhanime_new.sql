@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 11, 2024 at 12:10 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 11, 2024 lúc 05:31 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shopmohinhanime`
+-- Cơ sở dữ liệu: `shopmohinhanime`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
@@ -38,7 +38,7 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -48,7 +48,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `cat_name`, `status`) VALUES
@@ -62,7 +62,7 @@ INSERT INTO `categories` (`id`, `cat_name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Cấu trúc bảng cho bảng `contact`
 --
 
 CREATE TABLE `contact` (
@@ -76,7 +76,7 @@ CREATE TABLE `contact` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Cấu trúc bảng cho bảng `order`
 --
 
 CREATE TABLE `order` (
@@ -88,7 +88,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order`
+-- Đang đổ dữ liệu cho bảng `order`
 --
 
 INSERT INTO `order` (`order_id`, `customer_id`, `order_code`, `order_date`, `order_status`) VALUES
@@ -101,13 +101,12 @@ INSERT INTO `order` (`order_id`, `customer_id`, `order_code`, `order_date`, `ord
 (70, 22, '806970', '03/04/2024 09:45:06pm', 1),
 (71, 22, '365958', '04/04/2024 12:57:34am', 1),
 (72, 22, '350673', '05/04/2024 11:39:21am', 1),
-(73, 22, '177871', '05/04/2024 05:15:23pm', 1),
-(111, 31, '525599', '11/05/2024 04:25:54pm', 1);
+(73, 22, '177871', '05/04/2024 05:15:23pm', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Cấu trúc bảng cho bảng `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -125,7 +124,7 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_detail`
 --
 
 INSERT INTO `order_detail` (`order_detall_id`, `order_code`, `product_id`, `product_quantity`, `name`, `address`, `country`, `zipcode`, `phone`, `fee_shipping`, `product_price`) VALUES
@@ -143,13 +142,12 @@ INSERT INTO `order_detail` (`order_detall_id`, `order_code`, `product_id`, `prod
 (60, '806970', 32, 3, 'cus99', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389938456', 'free', 15),
 (61, '365958', 27, 1, 'Nguyen Van A', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389948946', 'free', 50),
 (62, '350673', 27, 1, 'cus99', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389938456', 'free', 50),
-(63, '177871', 27, 1, 'cus99', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389938456', 'free', 50),
-(101, '525599', 37, 1, 'honey', 'honey', 'null', 'null', '0123456788', 'free', 3467000);
+(63, '177871', 27, 1, 'cus99', '72 Long Tri Street, Ban Long, Chau Thanh, Tien Giang', 'null', 'null', '0389938456', 'free', 50);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -167,37 +165,27 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`p_id`, `category_name`, `provider_id`, `product_name`, `MRP`, `price`, `qty`, `product_sold`, `img`, `description`, `status`) VALUES
-(27, 16, 3, 'Chainsaw Man 1/7 Scale Figure eStream', 0, 7834000, 96, 5, '51PA2ae57kL_540x.jpg', 'Series: Chainsaw Man <br> Character: Chainsaw Man<br> Material: PVC <br> Product Type: 1/7 scale figure <br> Manufacturer: eStream <br> Dimensions (approx.): Approximately H281mm x W241mm x D256mm <br> *Pre - Order* Close Date: 10/10/2022', 1),
-(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 7564000, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'Series: Genshin Impact <br> Character: Keqing (Piercing Thunderbolt Ver.) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x APEX Innovation <br> Dimensions (approx.): H320mm*L190mm*W220', 1),
-(29, 16, 3, 'Suguru Geto 1/4 Scale Figure', 0, 3465000, 98, 2, 'pre-order-jujutsu-kaisen-suguru-geto-14-scale-figure-freeing4570001511295-347978_360x.jpg', 'Series: Jujutsu Kaisen <br> Character: Suguru Geto <br> Material: PVC & ABS <br> Product Type: 1/4 Scale Figure <br> Manufacturer: FREEing <br> Dimensions (approx.): Approximately 500mm in height. <br> *Pre - Order* Close Date: 11/14/2022', 1),
-(31, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 5478000, 100, 0, '41E_2BzvfHwlL_540x.jpg', 'Series: League of Legends <br> Character:  Jinx <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately 345mm in height <br> *Pre - Order* Close Date: 11/28/2021\r\n', 1),
-(32, 17, 4, 'Elementalist Lux Non-Scale Figure GSC', 0, 7576000, 100, 0, 'Nekotwo-League-of-Legends---Elementalist-Lux-Non-Scale-Figure-GSC-1679527904_1024x1024.jpg', 'Series: League of Legends <br> Character: lementalist Lux <br> Material: PVC & ABS <br> Product Type: Non-Scale Figure <br> Manufacturer: Good Smile Arts Shanghai <br> Dimensions (approx.): 340mm in height  <br> Limited In Stock In the US\r\n', 1),
-(33, 16, 4, 'Rimuru Tempest (Ultimate Ver.) 1/7 Scale Figure Estream', 0, 3461000, 100, 0, 'Nekotwo-_Pre-order_--Slime-Isekai---Rimuru-Tempest-_Ultimate-Ver._-1-7-Scale-Figure-Estream-1691731941526_1024x1024.jpg', 'Series: That Time I Got Reincarnated as a Slime <br> Character:  Rimuru Tempest <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: Estream <br> Dimensions (approx.): 35.4cm in height <br> *Pre - Order* Close Date: 04/28/2021\r\n', 1),
-(34, 16, 6, 'Kento Nanami 1/7 Scale Figure eStream', 0, 1575000, 120, 0, 'pre-order-jujutsu-kaisen-kento-n.jpg', 'Series: Jujutsu Kaisen <br> Character: Kento Nanami <br> Material: PVC <br> Product Type: 1/7 Scale Figure <br> Manufacturer: eStream <br> Dimensions (approx.):  Approximately 280mm high <br>  *Pre - Order* Close Date: 12/05/2022 <br> Release Date (Manufa', 1),
-(35, 16, 3, 'Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) 1/7 Scale Figure Estream', 0, 4688000, 100, 1, 'pre-order-date-a-barrett-kurumi-tokizaki-pigeon-blood-ruby-dress-ver-17-scale-figure-estream-963090_1024x1024.jpg', 'Series: Date a Barrett <br> Character: Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) <br> Material: PVC <br> Product Type: 1/7 Scale Figure\\r\\nManufacturer: Estream <br> Dimensions (approx.): Size （est）：TBD <br> *Pre - Order* Close Date: 12/19/2021', 1),
-(36, 19, 3, 'Caster/Muarsaki Shikibu 1/7 Scale Figure Alter', 0, 74564000, 100, 1, 'pre-order-fategrand-order-castermuarsaki-shikibu-17-scale-figure-alter-660908_1024x1024.jpg', 'Series:  FATE/GRAND ORDER <br> Character: Caster/Muarsaki Shikibu <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br>  Manufacturer: Alter <br> Dimensions (approx.): 290mm <br> *Pre - Order* Close Date: 03/13/2022 <br> Release Date: Jan-2023', 1),
-(37, 18, 3, 'Hatsune Miku (2022 Chinese New Year Ver.) 1/7 Scale Figue FuRyu', 0, 3467000, 100, 0, 'pre-order-hatsune-miku-fnex-poppro-hatsune-miku-2022-chinese-new-year-ver-17-scale-figure-furyu-383255_360x.jpg', 'Approximately 305mm in height.PKG <br> Size (est): W290 x D260 x H350mm\r\n', 1),
-(38, 17, 3, 'Genshin Impact - Barbara Pegg - 1/7 (Kotobukiya)', 0, 4361000, 100, 1, 'Nekotwo-_Pre-order_-Genshin-Impact---Barbara-_Shining-Idol_1-7-Scale-Figure-Kotobukiya-1675583070_360x.jpg', 'Series: Genshin Impact <br> Character: Barbara (Shining Idol) <br> Material: PVC & ABS <br> Product Type: Scale Figure <br> Manufacturer: miHoYo x Kotobukiya <br> Dimensions (approx.): Approximately 270mm in height <br> *Official Product* Limited U.S. In\r', 1),
-(42, 17, 5, 'Triumplant Excalibur', 0, 3464500, 100, 1, '51PA2ae57kL_540x.jpg', 'Franchise: Fate/Stay Night <br> Brand: Good Smile Company <br> Release Date: 20. Nov 2012 <br> Type: General <br> Dimensions: H=250 mm (9.75 in) Scale 1/7 <br> Material: PVC\r\n', 1),
-(44, 21, 5, 'MORSTORM & AniMester ONMYOJI Senhime 1/4 Scale Figure AniMester', 0, 9876000, 15, 0, 'pre-order-onmyoji-honkaku-gensou.jpg', 'Senhime Material: Pvc <br> Product Type: 1/4 Scale Figure <br> Manufacturer: AniMester <br> Dimensions (approx.): TBD <br> *Pre - Order* Close Date: 06/21/2022 <br> Release Date: Jan-2023', 1),
-(45, 18, 6, 'Aki Hayakawa 1/7 Scale Figure eStream', 0, 8765000, 15, 0, 'Aki-Hayakawa-17-Scale-Figure-eStream.jpg', 'Series: Chainsaw Man <br> Character: Aki Hayakawa <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: eStream <br> Dimensions (approx.): Approximately H288mm <br> *Pre - Order* Close Date: 2023-04-09 <br> Release Date (Manufact', 1),
-(46, 20, 6, 'Onmyoji - Suzuka Gozen 1/4 Scale Figure AniMester', 0, 7654000, 15, 0, 'pre-order-onmyoji-suzuka-gozen-1.jpg', 'Series: Onmyoji <br> Character: Suzuka Gozen <br> Material: PVC & ABS <br> Product Type: 1/4 Scale Figure <br> Manufacturer: AniMester <br>Dimensions (approx.): 430mm <br> *Pre - Order* Close Date: 02/15/2022 <br> Release Date: Jun-2022', 1),
-(47, 20, 4, 'LIV: LUMINANCE GENERIC FINAL (NORMAL EDITION & DELUXE EDITION) 1/7 Scale Figure', 0, 6543000, 15, 0, 'pre-order-punishing-gray-raven-l.jpg', 'Series: PUNISHING: GRAY RAVEN <br> Character: LIV: LUMINANCE GENERIC FINAL (NORMAL EDITION & DELUXE EDITION) <br> Material: PVC <br> Product Type: 1/7 Scale Figure <br> Manufacturer: UNKNOWN MODEL <br> Dimensions (approx.): Approximately 14.96 inches (38c', 1),
-(48, 19, 4, 'Ganyu (Plenilune Gaze Ver.) 1/7 Scale Figure Apex', 0, 5432000, 15, 0, 'pre-order-genshin-impact-ganyu-p.jpg', 'Series: Genshin Impact <br> Character: Ganyu <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: miHoYo x APEX Innovation <br> Dimensions (approx.): H220mm*L130mm*W130 <br> *Official Product* Limited In Stock In the US', 1),
-(49, 18, 3, 'Xiao (Guardian Yaksha Ver.) 1/7 Scale Figure Apex', 0, 4321000, 15, 0, 'Nekotwo-_Pre-order_-Genshin-Impa.jpg', 'Series: Genshin Impact <br> Character: Xiao (Guardian Yaksha Ver.) <br> Material: PVC&ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Apex <br> Dimensions (approx.): Approximately 28cm L  x 28cm W x 27cm H <br> *Official Product*', 1),
-(50, 18, 4, 'Satoru Gojo 1/7 Scale Figure Animester', 0, 3219000, 15, 0, 'Satoru-Gojo-17-Scale-Figure-Animester.jpg', 'Series: Jujutsu Kaisen <br> Character: Satoru Gojo <br> Material: Polystone, ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Animester <br> Dimensions (approx.): Approximately 275mm in Height <br> *Official Product*', 1),
-(51, 21, 3, 'Chainsaw Man - Hayakawa Aki - 1/7 (Myethos)', 0, 2198000, 15, 0, 'Chainsaw-Man-Hayakawa-Aki-17-(Myethos).jpg', 'Series: Chainsaw Man <br> Character: Hayakawa Aki <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Myethos <br> Dimensions (approx.): Approximately H195mm <br> *Pre - Order* Close Date: 2023-02-26 <br> Release Date (Manufact', 1),
-(52, 17, 3, 'Genshin Impact - Kamisato Ayaka - 1/7 - Frostflake Heron Ver. (Apex Innovation)', 0, 1987000, 15, 0, 'Genshin-Impact-Kamisato-Ayaka-17-Frostflake-Heron-Ver-(Apex-Innovation).jpg', 'Series: Genshin Impact <br> Character: Kamisato Ayaka(Frostflake Heron Ver.) <br> Material: PVC & ABS <br> Product Type: 1/7 Scale Figure <br> Manufacturer: Apex Innovation <br> Dimensions (approx.): Approximately H290mm <br> Release Date (Manufacturer): ', 1),
-(53, 20, 3, 'Fate/Grand Order - Saber Alter - 1/7 - Dress ver.(Alter)', 0, 1243000, 15, 0, 'FateGrand-Order-Saber-Alter-17-Dress-ver.(Alter).jpg', 'Franchise: Fate/Grand Order <br> Brand: Alter <br> Release Date: 30. Jul 2021 <br> Type: General <br> Dimensions: H=230 mm (8.97 in) Scale 1/7 <br> Material: ABS, PVC', 1);
+(27, 16, 3, 'Chainsaw Man 1/7 Scale Figure eStream', 0, 50, 96, 5, '51PA2ae57kL_540x.jpg', 'San pham moi nhat!', 0),
+(28, 16, 3, 'Keqing (Piercing Thunderbolt Ver.) 1/7 Scale Figure Apex', 0, 50, 100, 0, 'Nekotwo-Genshin-Impact---Keqing-_Piercing-Thunderbolt-Ver._1-7-Scale-Figure-Apex-1673504053_360x.jpg', 'San pham moi nhat!', 1),
+(29, 16, 3, 'Suguru Geto 1/4 Scale Figure', 0, 50, 98, 2, 'pre-order-jujutsu-kaisen-suguru-geto-14-scale-figure-freeing4570001511295-347978_360x.jpg', 'Sản phẩm mới nhất!', 0),
+(31, 16, 3, 'League of Legends - Jinx 1/7 Scale Figure Myethos', 0, 50, 100, 0, 'pre-order-chainsaw-man-chainsaw-man-17-scale-figure-estream4580769940534-216785_1024x1024.jpg', 'Sản phẩm mới nhất!', 1),
+(32, 17, 4, 'Elementalist Lux Non-Scale Figure GSC', 0, 15, 100, 0, 'Nekotwo-League-of-Legends---Elementalist-Lux-Non-Scale-Figure-GSC-1679527904_1024x1024.jpg', 'Sản phẩm mới nhất', 1),
+(33, 16, 4, 'Rimuru Tempest (Ultimate Ver.) 1/7 Scale Figure Estream', 0, 25, 100, 0, 'Nekotwo-_Pre-order_--Slime-Isekai---Rimuru-Tempest-_Ultimate-Ver._-1-7-Scale-Figure-Estream-1691731941526_1024x1024.jpg', 'Sản phẩm mới nhất!', 1),
+(34, 16, 6, 'Kento Nanami 1/7 Scale Figure eStream', 0, 15, 120, 0, 'pre-order-jujutsu-kaisen-kento-nanami-17-scale-figure-estream4580769940404-599232_1024x1024.jpg', 'Sản phẩm mới nhất!', 1),
+(35, 16, 3, 'Kurumi Tokizaki (Pigeon Blood Ruby Dress Ver.) 1/7 Scale Figure Estream', 0, 50, 100, 1, 'pre-order-date-a-barrett-kurumi-tokizaki-pigeon-blood-ruby-dress-ver-17-scale-figure-estream-963090_1024x1024.jpg', 'Sản phẩm mới nhất!', 0),
+(36, 19, 3, 'Caster/Muarsaki Shikibu 1/7 Scale Figure Alter', 0, 50, 100, 1, 'pre-order-fategrand-order-castermuarsaki-shikibu-17-scale-figure-alter-660908_1024x1024.jpg', 'Sản phẩm mới nhất!', 0),
+(37, 18, 3, 'Hatsune Miku (2022 Chinese New Year Ver.) 1/7 Scale Figue FuRyu', 0, 50, 100, 0, 'pre-order-hatsune-miku-fnex-poppro-hatsune-miku-2022-chinese-new-year-ver-17-scale-figure-furyu-383255_360x.jpg', 'Sản phẩm mới nhất!', 1),
+(38, 17, 3, 'Genshin Impact - Barbara Pegg - 1/7 (Kotobukiya)', 0, 50, 100, 1, 'Nekotwo-_Pre-order_-Genshin-Impact---Barbara-_Shining-Idol_1-7-Scale-Figure-Kotobukiya-1675583070_360x.jpg', 'Sản phẩm mới nhất!', 0),
+(42, 17, 5, 'samsung galaxy a201', 0, 51, 100, 1, '51PA2ae57kL_540x.jpg', 'adsd', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `providers`
+-- Cấu trúc bảng cho bảng `providers`
 --
 
 CREATE TABLE `providers` (
@@ -208,7 +196,7 @@ CREATE TABLE `providers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `providers`
+-- Đang đổ dữ liệu cho bảng `providers`
 --
 
 INSERT INTO `providers` (`provider_id`, `provider_name`, `address`, `contact_information`) VALUES
@@ -220,7 +208,7 @@ INSERT INTO `providers` (`provider_id`, `provider_name`, `address`, `contact_inf
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
 CREATE TABLE `roles` (
@@ -229,7 +217,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -239,7 +227,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -251,7 +239,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
@@ -261,7 +249,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_registers`
+-- Cấu trúc bảng cho bảng `user_registers`
 --
 
 CREATE TABLE `user_registers` (
@@ -277,7 +265,7 @@ CREATE TABLE `user_registers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user_registers`
+-- Đang đổ dữ liệu cho bảng `user_registers`
 --
 
 INSERT INTO `user_registers` (`id`, `name`, `email`, `address`, `phone`, `password`, `dateofbirth`, `sex`, `status`) VALUES
@@ -293,13 +281,12 @@ INSERT INTO `user_registers` (`id`, `name`, `email`, `address`, `phone`, `passwo
 (26, 'quan123', 'admi1232n@localhost.com', 'Tien Giang', '0928957546', '$2y$10$io/gIcUlWNPEcCwZYIkHGemL/MSlAL1NJngMsvQVlAgBvS3ULN.rm', '0000-00-00 00:00:00', 1, 1),
 (27, 'aha123', 'aha@gmail.com', 'Tien Giang', '0928957546', '$2y$10$Gb5Acc3kSu5X4mw2MbiS2euhj3R8suNpmtE/pfA6HGsAL4GK.ojqu', '0000-00-00 00:00:00', 1, 1),
 (28, 'quan2323', 'hquan2220020915@gmail.com', 'Tien Giang', '0928957546', '$2y$10$31A.3w.6C4wIrkAmydHi2eNIPfHzIff6Ep44VXYbvnfO5gq1zP2pG', '0000-00-00 00:00:00', 1, 1),
-(30, 'quan520222', 'hquan2002220915@gmail.com', 'Tien Giang', '0928957546', '$2y$10$BO.o0n704RdEXW7Pm2mGieoVVo25XSV3uelwFH7xIrPNiKlM9ZbIO', '0000-00-00 00:00:00', 1, 1),
-(31, 'honey', 'honey@gmail.com', 'honey', '0123456788', '$2y$10$OcAeGZXvAWx2jO7RluE3Xe2WaOzC5hMyFfBV6QtYZQJ3Q44fbGvt2', '0000-00-00 00:00:00', 1, 1);
+(30, 'quan520222', 'hquan2002220915@gmail.com', 'Tien Giang', '0928957546', '$2y$10$BO.o0n704RdEXW7Pm2mGieoVVo25XSV3uelwFH7xIrPNiKlM9ZbIO', '0000-00-00 00:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vnpay`
+-- Cấu trúc bảng cho bảng `vnpay`
 --
 
 CREATE TABLE `vnpay` (
@@ -317,7 +304,7 @@ CREATE TABLE `vnpay` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `vnpay`
+-- Đang đổ dữ liệu cho bảng `vnpay`
 --
 
 INSERT INTO `vnpay` (`id_vnpay`, `vnp_amount`, `vnp_bankcode`, `vnp_banktranno`, `vnp_cardtype`, `vnp_orderinfo`, `vnp_paydate`, `vnp_responsecode`, `vnp_tmncode`, `vnp_transactionno`, `order_code`) VALUES
@@ -341,47 +328,46 @@ INSERT INTO `vnpay` (`id_vnpay`, `vnp_amount`, `vnp_bankcode`, `vnp_banktranno`,
 (35, '50', 'NCB', 'VNP14410091', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240510220743', '00', 'M6VA80FI', '14410091', '936976'),
 (36, '50', 'NCB', 'VNP14410095', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240510221016', '00', 'M6VA80FI', '14410095', '796893'),
 (37, '50000', 'NCB', 'VNP14410246', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511005712', '00', 'M6VA80FI', '14410246', '456872'),
-(38, '150000', 'NCB', 'VNP14410255', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511010429', '00', 'M6VA80FI', '14410255', '697218'),
-(39, '3467000', 'NCB', 'VNP14410718', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511162538', '00', 'M6VA80FI', '14410718', '525599');
+(38, '150000', 'NCB', 'VNP14410255', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511010429', '00', 'M6VA80FI', '14410255', '697218');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contact`
+-- Chỉ mục cho bảng `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`contact_id`);
 
 --
--- Indexes for table `order`
+-- Chỉ mục cho bảng `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `order_code` (`order_code`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`order_detall_id`),
   ADD KEY `order_code` (`order_code`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`p_id`),
@@ -389,117 +375,117 @@ ALTER TABLE `products`
   ADD KEY `supplier_id` (`provider_id`);
 
 --
--- Indexes for table `providers`
+-- Chỉ mục cho bảng `providers`
 --
 ALTER TABLE `providers`
   ADD PRIMARY KEY (`provider_id`);
 
 --
--- Indexes for table `roles`
+-- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_registers`
+-- Chỉ mục cho bảng `user_registers`
 --
 ALTER TABLE `user_registers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `vnpay`
+-- Chỉ mục cho bảng `vnpay`
 --
 ALTER TABLE `vnpay`
   ADD PRIMARY KEY (`id_vnpay`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
   MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT cho bảng `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT for table `order_detail`
+-- AUTO_INCREMENT cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `providers`
+-- AUTO_INCREMENT cho bảng `providers`
 --
 ALTER TABLE `providers`
   MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user_registers`
+-- AUTO_INCREMENT cho bảng `user_registers`
 --
 ALTER TABLE `user_registers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `vnpay`
+-- AUTO_INCREMENT cho bảng `vnpay`
 --
 ALTER TABLE `vnpay`
-  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_code`) REFERENCES `order` (`order_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_name`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
