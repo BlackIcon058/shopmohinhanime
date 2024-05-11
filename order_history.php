@@ -13,12 +13,25 @@ $_SESSION['user_id'] = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
 $allDonHang = tatca_donhang($_SESSION['user_id']);
 
 // phan trang
-$limit = 4;
+$limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
-$sql = "SELECT * FROM `order` WHERE customer_id = '{$_SESSION['user_id']}' LIMIT $start, $limit";
+
+
+// $sql = "SELECT * FROM `order` WHERE customer_id = '{$_SESSION['user_id']}' LIMIT $start, $limit";
+
+$sql = "SELECT `order`.*, SUM(order_detail.product_quantity * order_detail.product_price) AS total_order
+FROM `order`
+JOIN order_detail ON `order`.order_code = order_detail.order_code
+WHERE customer_id = '{$_SESSION['user_id']}'
+GROUP BY `order`.order_code
+LIMIT $start, $limit";
+
 $query = mysqli_query($con, $sql);
-$sql_total = "SELECT COUNT(*) AS total FROM `order`WHERE customer_id = '{$_SESSION['user_id']}'";
+$sql_total = "SELECT COUNT(*) AS total FROM `order`
+WHERE customer_id = '{$_SESSION['user_id']}'";
+
+
 $query_total = mysqli_query($con, $sql_total);
 $result_total = mysqli_fetch_assoc($query_total);
 $total_pages = ceil($result_total['total'] / $limit);
@@ -70,7 +83,7 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                     
                                     <?php 
                                     if ($allDonHang && mysqli_num_rows($allDonHang) > 0) {
-                                    while ($row = mysqli_fetch_assoc($allDonHang)) { ?>
+                                    while ($row = mysqli_fetch_assoc($query)) { ?>
                                         <tr>
                                             <td><?php echo $row['order_code']; ?></td>
 
@@ -78,8 +91,10 @@ $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                                 <?php
                                                 if ($row['order_status'] == 1) {
                                                     echo "Confirmed";
-                                                } else {
+                                                } elseif ($row['order_status'] == 2) {
                                                     echo "Delivered successfully";
+                                                } elseif ($row['order_status'] == 3) {
+                                                    echo "Canceled order";
                                                 }
                                                 ?>
                                             </td>
