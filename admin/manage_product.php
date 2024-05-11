@@ -90,7 +90,7 @@ if (!isset($_SESSION['ADMIN'])) {
                       <script>
                         function confirmDelete() {
                           var productName = "<?php echo $row['product_name']; ?>";
-                          return confirm('Sản phẩm "' + productName + '" đã được bán ra. Hệ thống sẽ tiến hành ẩn sản phẩm trên trang web. Bạn có muốn tiếp tục không?');
+                          return confirm('Product "' + productName + '" has been sold. The system will hide the product on the website. Do you want to continue?');
                         }
                       </script>
 
@@ -110,7 +110,7 @@ if (!isset($_SESSION['ADMIN'])) {
                     <?php
                     } else {
                     ?>
-                      <a href="del_product.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-sm trash" title="Delete" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm <?php echo $row['product_name']; ?> không?')">
+                      <a href="del_product.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-sm trash" title="Delete" onclick="return confirm('Are you sure want to delete the product <?php echo $row['product_name']; ?> ?')">
                         <i class="fas fa-trash-alt"></i>
                       </a>
 

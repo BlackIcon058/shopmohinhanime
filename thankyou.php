@@ -20,7 +20,7 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
 } elseif (isset($_GET['vnp_TransactionNo']) && $_GET['vnp_TransactionNo'] != 0) {
 ?>
   <script>
-    $_SESSION['message'] = 'Thanh toán thành công qua VNPAY!.';
+    $_SESSION['message'] = 'Payment successfully by VNPAY!.';
     alert("<?php echo $_SESSION['message']; ?>");
     <?php unset($_SESSION['message']); ?>
   </script>
@@ -147,7 +147,7 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
 
     <?php
     }elseif($_GET['vnp_TransactionNo'] == 0){
-      echo '<script>alert("Thanh toán không thành công!"); window.location.href="shipping.php";</script>';
+      echo '<script>alert("Not successful payment!"); window.location.href="shipping.php";</script>';
     }
   } else {
     ?>

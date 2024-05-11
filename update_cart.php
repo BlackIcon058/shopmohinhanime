@@ -14,8 +14,8 @@ if (isset($_POST['delete_cart'])) {
         echo "Lỗi: " . mysqli_error($con);
         $_SESSION['message'] = 'Lỗi!';
     } else {
-        echo "Đã xóa sản phẩm trong giỏ hàng!";
-        $_SESSION['message'] = 'Đã xóa sản phẩm trong giỏ hàng!';
+        echo "Product removed from cart!";
+        $_SESSION['message'] = 'Product removed from cart!';
     }
 } else {
     $product_id = $_POST['product_id'];
@@ -32,8 +32,8 @@ if (isset($_POST['delete_cart'])) {
             echo "Lỗi: " . mysqli_error($con);
             $_SESSION['message'] = 'Lỗi!';
         } else {
-            echo "Cập nhật số lượng sản phẩm thành công!";
-            $_SESSION['message'] = 'Cập nhật số lượng sản phẩm thành công!';
+            echo "Update successfully quantity of product!";
+            $_SESSION['message'] = 'Update successfully quantity of product!';
         }
     }
 }

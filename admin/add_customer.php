@@ -60,8 +60,8 @@ if (!isset($_SESSION['ADMIN'])) {
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item">List of Staff</li>
-            <li class="breadcrumb-item"><a href="#">Add more staff</a></li>
+            <li class="breadcrumb-item">List of Users</li>
+            <li class="breadcrumb-item"><a href="#">Add more users</a></li>
         </ul>
     </div>
     <div class="row">
@@ -87,7 +87,7 @@ if (!isset($_SESSION['ADMIN'])) {
                 <input class="form-control" type="text">
               </div> -->
                         <div class="form-group col-md-4">
-                            <label class="control-label">Name</label>
+                            <label class="control-label">User name</label>
                             <input class="form-control" name="cus_name" type="text" required>
                         </div>
                         <div class="form-group col-md-4">
@@ -109,10 +109,10 @@ if (!isset($_SESSION['ADMIN'])) {
                             <label class="control-label">Phone</label>
                             <input class="form-control" name="cus_phone" type="text" required>
                         </div>
-                        <div class="form-group col-md-4">
+                        <!-- <div class="form-group col-md-4">
                             <label class="control-label">Date of Birth</label>
                             <input class="form-control" name="cus_date" type="date">
-                        </div>
+                        </div> -->
                         <!-- <div class="form-group  col-md-3">
                 <label class="control-label">Place of birth</label>
                 <input class="form-control" type="text" required>

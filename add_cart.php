@@ -23,8 +23,8 @@ if (isset($_POST['product_id'], $_POST['qty']) && ($_POST['qty'] > 0)) {
             echo "Lỗi: " . mysqli_error($con);
             $_SESSION['message'] = 'Lỗi!';
         } else {
-            echo "Cập nhật số lượng sản phẩm thành công!";
-            $_SESSION['message'] = 'Cập nhật số lượng sản phẩm thành công!';
+            echo "Update quantity of product successful!";
+            $_SESSION['message'] = 'Update quantity of product successful!';
         }
     } else {
         $data = [
@@ -42,8 +42,8 @@ if (isset($_POST['product_id'], $_POST['qty']) && ($_POST['qty'] > 0)) {
             echo "Lỗi: " . mysqli_error($con);
             $_SESSION['message'] = 'Lỗi!';
         } else {
-            echo "Thêm sản phẩm vào giỏ hàng thành công!";
-            $_SESSION['message'] = 'Thêm sản phẩm vào giỏ hàng thành công!';
+            echo "Add product successful!";
+            $_SESSION['message'] = 'Add product successful!';
         }
     }
 }

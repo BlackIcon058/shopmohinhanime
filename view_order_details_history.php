@@ -48,26 +48,26 @@ $check_payment_method = check_payment_method($_GET['order_code']);
                                 if ($get_status_order == 1) {
                                     echo 'Đã xác nhận';
                                 } elseif ($get_status_order == 2) {
-                                    echo 'Đã giao thành công';
+                                    echo 'Delivered successfully';
                                 } else {
-                                    echo 'Đã hủy';
+                                    echo 'Canceled';
                                 }
                                 ?>
                             </p>
                         </div>
                         <br>
 
-                        <p style="font-weight: 700;">Địa Chỉ Nhận Hàng</p>
+                        <p style="font-weight: 700;">Delivery Address</p>
                         <br>
                         <ul>
                             <?php foreach ($order_details as $row) : ?>
                                 <?php
                                 extract($row)
                                 ?>
-                                <li>Người nhận: <?php echo $row['name'] ?></li>
-                                <li>Số điện thoại: <?php echo $row['phone'] ?></li>
-                                <li>Địa chỉ nhận: <?php echo $row['address'] ?></li>
-                                <li>Hình thức thanh toán:
+                                <li>Receiver: <?php echo $row['name'] ?></li>
+                                <li>Phone number: <?php echo $row['phone'] ?></li>
+                                <li>Delivery address: <?php echo $row['address'] ?></li>
+                                <li>Payments:
                                     <?php
                                     if ($check_payment_method) {
                                         echo 'VNPay';

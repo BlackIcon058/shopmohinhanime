@@ -22,7 +22,7 @@ $value = view_customer();
 <main class="app-content">
   <div class="app-title">
     <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item active"><a href="#"><b>List of Staff</b></a></li>
+      <li class="breadcrumb-item active"><a href="#"><b>List of Users</b></a></li>
     </ul>
     <div id="clock"></div>
   </div>
