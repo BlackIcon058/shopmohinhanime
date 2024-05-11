@@ -522,6 +522,22 @@ function update_record()
     }
 }
 
+function check_product_inOrder($product_id){
+    global $con;
+    // Truy vấn để kiểm tra xem có sản phẩm trong các đơn hàng hay không
+    $sql = "SELECT * FROM order_detail WHERE product_id = $product_id";
+    $query = mysqli_query($con, $sql);
+    // Kiểm tra số lượng hàng trả về
+    $count = mysqli_num_rows($query);
+    // Nếu có ít nhất một hàng trả về, tức là sản phẩm tồn tại trong đơn hàng
+    if($count > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 /////////////////////////////// Contact ///////////////////////////////
 function contact()
 {

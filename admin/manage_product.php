@@ -81,7 +81,7 @@ if (!isset($_SESSION['ADMIN'])) {
                     <!-- <button class="btn btn-primary btn-sm trash" type="button" title="Delete" onclick="confirmDelete(this)"><i class="fas fa-trash-alt"></i>
                     </button> -->
                     <?php
-                    if ($row['product_sold'] > 0) {
+                    if ($row['product_sold'] > 0 || check_product_inOrder($row['p_id'])) {
                     ?>
                       <a href="hidden_product.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-sm trash" title="Delete" onclick="return confirmDelete();">
                         <i class="fas fa-trash-alt"></i>

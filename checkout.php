@@ -1,9 +1,10 @@
 <?php require_once 'inc/header.php'; ?>
 <!-- Navigation -->
 <?php require_once 'inc/nav.php';
+$_SESSION['user_id'] = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
 $cart = show_giohang($_SESSION['user_id']);
 
-if (!isset($_SESSION['EMAIL_USER_LOGIN']) || !($cart && $cart->num_rows > 0) || empty($_POST["name"]) || empty($_POST["phone"]) || empty($_POST["address"])) {
+if (!isset($_SESSION['EMAIL_USER_LOGIN']) || !($cart && $cart->num_rows > 0) || empty($_POST["name"]) || empty($_POST["phone"]) || empty($_POST["address"]) || $_SESSION['user_id'] == 0) {
 	// header("location: index.php");
 	echo "<script>window.location.href = 'index.php';</script>";
 	exit;
