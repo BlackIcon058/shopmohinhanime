@@ -16,12 +16,12 @@ if (!empty($_POST["address"]) ) {
     $customer_id = $_SESSION['user_id'];
     $sql = "UPDATE user_registers SET address = '$address' WHERE id = $customer_id";
     if (mysqli_query($con, $sql)) {
-        echo '<script>alert("Cập nhật địa chỉ thành công!"); window.location.href="profile_info.php";</script>';
+        echo '<script>alert("Successful update address!"); window.location.href="profile_info.php";</script>';
     } else {
-        echo '<script>alert("Lỗi cập nhật địa chỉ!"); window.location.href="profile_info.php";</script>';
+        echo '<script>alert("Fail update address!"); window.location.href="profile_info.php";</script>';
     }
 } else {
-    echo '<script>alert("Vui lòng nhập địa chỉ!"); window.location.href="profile_info.php";</script>';
+    echo '<script>alert("Please input address!"); window.location.href="profile_info.php";</script>';
 }   
 
 

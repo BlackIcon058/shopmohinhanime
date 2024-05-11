@@ -236,12 +236,12 @@ function insert_chitiet_donhang($data_order_detail)
         $result = mysqli_query($con, $sql);
 
         if (!$result) {
-            echo "Lỗi: " . mysqli_error($con);
+            echo "Error: " . mysqli_error($con);
         } else {
-            echo "Đặt hàng thành công!";
+            echo "Successful order";
         }
     } else {
-        echo "Lỗi: Dữ liệu không đủ.";
+        echo "Error: Insufficient data.";
     }
 }
 

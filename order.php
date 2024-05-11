@@ -104,7 +104,7 @@ if (isset($_POST['payment_method']) && $_POST['payment_method'] == 'cash_payment
             }
             // unset($_SESSION["shopping_cart"]);
             delete_giohang($_SESSION['user_id']);
-            $_SESSION['message'] = 'Đặt hàng thành công!';
+            $_SESSION['message'] = 'Order successfully!';
             header('Location: thankyou.php?order_code=' . $order_code);
             exit;
         }

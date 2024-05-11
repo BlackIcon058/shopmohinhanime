@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
 
     if ($result) {
         // echo 'thanh cong';
-        echo '<script>alert("Sản phẩm đã được ẩn khỏi trang web.");</script>';
+        echo '<script>alert("The product has been hidden from the website.");</script>';
         header("location: manage_product.php");
         exit;
     }else{
