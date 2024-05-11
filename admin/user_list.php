@@ -46,7 +46,7 @@ if (!isset($_SESSION['ADMIN'])) {
               <tr>
                 <!-- <th width="10"><input type="checkbox" id="all"></th> -->
                 <th>Customer's ID</th>
-                <th width="100">Name</th>
+                <th width="100">User name</th>
                 <!-- <th width="20">Card Photo</th> -->
                 <th width="300">Address</th>
                 <th>Email</th>
