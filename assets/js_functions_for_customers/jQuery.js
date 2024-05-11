@@ -144,7 +144,7 @@ function login_user_record() {
 
                         if (data.trim() == "Invalid") {
                             // console.log(false);
-                            $('#error').html('Please check the password or email!');
+                            $('#error').html('Please check the password or username!');
                         }
 
                         if (data.trim() == "Locked") {
