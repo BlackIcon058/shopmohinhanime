@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2024 at 04:26 PM
+-- Generation Time: May 12, 2024 at 03:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -102,7 +102,8 @@ INSERT INTO `order` (`order_id`, `customer_id`, `order_code`, `order_date`, `ord
 (73, 22, '177871', '05/04/2024 05:15:23pm', 1),
 (111, 31, '525599', '11/05/2024 04:25:54pm', 2),
 (112, 32, '330552', '11/05/2024 08:04:33pm', 3),
-(113, 32, '256639', '11/05/2024 08:06:21pm', 2);
+(113, 32, '256639', '11/05/2024 08:06:21pm', 2),
+(114, 31, '188506', '12/05/2024 08:39:26am', 3);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,9 @@ INSERT INTO `order_detail` (`order_detall_id`, `order_code`, `product_id`, `prod
 (102, '330552', 28, 1, 'quyenbanhbeo', 'nhà 4 mặt tiền, quận 6, tphcm', 'null', 'null', '0987654321', 'free', 7564000),
 (103, '330552', 53, 1, 'quyenbanhbeo', 'nhà 4 mặt tiền, quận 6, tphcm', 'null', 'null', '0987654321', 'free', 1243000),
 (104, '256639', 33, 1, 'quyenbanhbeo', 'nhà 4 mặt tiền, quận 6, tphcm', 'null', 'null', '0987654321', 'free', 3461000),
-(105, '256639', 38, 2, 'quyenbanhbeo', 'nhà 4 mặt tiền, quận 6, tphcm', 'null', 'null', '0987654321', 'free', 4361000);
+(105, '256639', 38, 2, 'quyenbanhbeo', 'nhà 4 mặt tiền, quận 6, tphcm', 'null', 'null', '0987654321', 'free', 4361000),
+(106, '188506', 32, 1, 'honey', 'District 1 - Quan 1', 'null', 'null', '0123456788', 'free', 7576000),
+(107, '188506', 33, 1, 'honey', 'District 1 - Quan 1', 'null', 'null', '0123456788', 'free', 3461000);
 
 -- --------------------------------------------------------
 
@@ -342,7 +345,8 @@ INSERT INTO `vnpay` (`id_vnpay`, `vnp_amount`, `vnp_bankcode`, `vnp_banktranno`,
 (37, '50000', 'NCB', 'VNP14410246', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511005712', '00', 'M6VA80FI', '14410246', '456872'),
 (38, '150000', 'NCB', 'VNP14410255', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511010429', '00', 'M6VA80FI', '14410255', '697218'),
 (39, '3467000', 'NCB', 'VNP14410718', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511162538', '00', 'M6VA80FI', '14410718', '525599'),
-(40, '12183000', 'NCB', 'VNP14410832', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511200550', '00', 'M6VA80FI', '14410832', '256639');
+(40, '12183000', 'NCB', 'VNP14410832', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240511200550', '00', 'M6VA80FI', '14410832', '256639'),
+(41, '11037000', 'NCB', 'VNP14411129', 'ATM', 'Thanh toán đơn hàng đặt tại Website FigureShop.', '20240512083920', '00', 'M6VA80FI', '14411129', '188506');
 
 --
 -- Indexes for dumped tables
@@ -426,7 +430,7 @@ ALTER TABLE `vnpay`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -444,13 +448,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `order_detall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -486,7 +490,7 @@ ALTER TABLE `user_registers`
 -- AUTO_INCREMENT for table `vnpay`
 --
 ALTER TABLE `vnpay`
-  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
